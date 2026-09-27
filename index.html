@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Wildkin Tester Guide</title>
+<meta name="description" content="How to use, play and learn with Wildkin, with a checklist and feedback form for testers." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest: #2d6a4f; --sage: #40916c; --sage-light: #74c69d; --orange: #f4a261; --orange-deep: #e76f51;
+    --cream: #f1faee; --ink: #1b4332; --ink-soft: #52796f; --mist: #e3efe8; --card: #ffffff;
+    --ok: #3aa76d; --ok-bg: #ddf5e6; --bad: #e5484d; --bad-bg: #fde2df; --line: rgba(27, 67, 50, 0.1);
+    --shadow: 0 6px 20px -8px rgb(27 67 50 / 0.18), 0 2px 6px -2px rgb(27 67 50 / 0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font: 400 17px/1.55 Fredoka, ui-rounded, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--forest); font-weight: 600; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 120px; }
+  header.hero { background: linear-gradient(160deg, #d8f3dc, var(--cream) 70%); padding: 40px 16px 28px; }
+  header.hero .wrap { padding-bottom: 0; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, var(--sage), var(--forest)); display: grid; place-items: center; font-size: 28px; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.1; margin: 18px 0 8px; letter-spacing: -0.01em; }
+  .lead { font-size: 18px; color: var(--ink-soft); margin: 0 0 18px; }
+  .pill-btn { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 22px; border-radius: 999px; border: 0; background: var(--forest); color: #fff; font: 600 17px Fredoka, sans-serif; text-decoration: none; cursor: pointer; box-shadow: 0 6px 16px -6px rgba(45,106,79,.6); }
+  .pill-btn.ghost { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  .pill-btn.accent { background: var(--orange); color: var(--ink); }
+  .pill-btn:disabled { opacity: .45; cursor: default; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  nav.toc { position: sticky; top: 0; z-index: 5; background: rgba(241,250,238,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav.toc .wrap { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  nav.toc a { flex: none; text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 999px; background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  section { margin-top: 28px; }
+  .card { background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 20px; }
+  h2 { font-size: 26px; margin: 0 0 6px; }
+  h3 { font-size: 18px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); font-weight: 600; }
+  .table-scroll { overflow-x: auto; }
+  .tip { background: #fff6ec; border-radius: 14px; padding: 12px 14px; margin: 12px 0; font-size: 15px; }
+  label.fb { display: block; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; }
+  textarea, input[type=text] { width: 100%; margin-top: 6px; border: 2px solid var(--mist); border-radius: 16px; padding: 12px 14px; font: 16px/1.45 Fredoka, sans-serif; color: var(--ink); background: #fbfefc; resize: vertical; }
+  textarea { min-height: 84px; }
+  textarea:focus, input[type=text]:focus { outline: none; border-color: var(--sage-light); background: #fff; }
+  /* checklist */
+  .check { list-style: none; padding: 0; margin: 10px 0 0; }
+  .check li { border-top: 1px solid var(--line); padding: 10px 0; margin: 0; }
+  .check li:first-child { border-top: 0; }
+  .ck-row { display: flex; align-items: center; gap: 10px; }
+  .ck-text { flex: 1; min-width: 0; }
+  .ck-btns { display: flex; gap: 6px; flex: none; }
+  .ck-btns button { height: 36px; min-width: 44px; padding: 0 10px; border-radius: 999px; border: 2px solid var(--mist); background: #fff; font: 600 14px Fredoka, sans-serif; color: var(--ink-soft); cursor: pointer; }
+  .ck-btns button[aria-pressed=true].ok { background: var(--ok-bg); border-color: var(--ok); color: var(--forest); }
+  .ck-btns button[aria-pressed=true].bad { background: var(--bad-bg); border-color: var(--bad); color: #b3261e; }
+  li.done-ok .ck-text { color: var(--ink-soft); }
+  li.done-ok .ck-text::before { content: "✓ "; color: var(--ok); font-weight: 700; }
+  .ck-note { display: none; margin-top: 8px; }
+  li.done-bad .ck-note { display: block; }
+  .ck-note textarea { min-height: 60px; border-color: #f6c9c5; }
+  .progress { height: 10px; border-radius: 10px; background: var(--mist); overflow: hidden; }
+  .progress > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--sage), var(--sage-light)); transition: width .4s; }
+  .counts { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
+  /* bottom bar */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+  .bar .inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .bar .status { flex: 1; min-width: 0; font-size: 14px; color: var(--ink-soft); }
+  .bar .status strong { color: var(--ink); }
+  .toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 14px; font-size: 15px; transition: .25s; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .small { font-size: 14px; color: var(--ink-soft); }
+  @media (max-width: 520px) {
+    .card { padding: 16px; border-radius: 18px; }
+    .ck-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .bar .inner { gap: 8px; }
+    .pill-btn { height: 44px; padding: 0 16px; font-size: 16px; }
+  }
+  @media print { nav.toc, .bar, .toast, .no-print { display: none !important; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><div class="logo" aria-hidden="true">🌿</div><strong style="font-size:22px;color:var(--forest)">Wildkin</strong></div>
+    <h1>How to use, play and learn</h1>
+    <p class="lead">A tester’s guide. Try each part of the app, tick the checklist as you go, and write your thoughts in the boxes. Everything saves automatically on this device; press <strong>Send feedback</strong> when you’re ready.</p>
+    <div class="row no-print">
+      <a class="pill-btn" href="https://wildkin-mu.vercel.app" target="_blank" rel="noopener">Open Wildkin ↗</a>
+      <a class="pill-btn ghost" href="#checklist">Go to the checklist</a>
+    </div>
+    <label class="fb" for="tester-name">Your name</label>
+    <input id="tester-name" type="text" data-key="name" placeholder="So we know who the feedback is from" maxlength="80" />
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#welcome">Welcome</a><a href="#start">Getting started</a><a href="#home">Home</a><a href="#missions">Missions</a><a href="#shop">Shop</a><a href="#roam">Walk &amp; Build</a><a href="#explore">Explore</a><a href="#social">Friends &amp; groups</a><a href="#safety">Safety</a><a href="#checklist">Checklist</a><a href="#feedback">Feedback</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="welcome"><div class="card">
+  <h2>Welcome</h2>
+  <p>Wildkin is live at <a href="https://wildkin-mu.vercel.app" target="_blank" rel="noopener">wildkin-mu.vercel.app</a>. Adopt a wild friend, grow its habitat, and turn real-life eco actions into progress.</p>
+  <h3>Install it on your phone</h3>
+  <p>Recommended: it then opens full screen like a normal app.</p>
+  <ul>
+    <li><strong>Android (Chrome):</strong> open the link, wait a few seconds and tap <strong>Install app</strong>, or use the ⋮ menu → <strong>Add to Home screen</strong>.</li>
+    <li><strong>iPhone (Safari):</strong> open the link, tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.</li>
+    <li><strong>Laptop:</strong> works in any modern browser. Use W A S D or the arrow keys in Walk around.</li>
+  </ul>
+  <label class="fb" for="fb-welcome">Your thoughts: installing and first look</label>
+  <textarea id="fb-welcome" data-key="fb.welcome" placeholder="Did it install easily? First impression?"></textarea>
+</div></section>
+
+<section id="start"><div class="card">
+  <h2>Getting started</h2>
+  <p>Setting up takes about two minutes and needs no email, real name or location.</p>
+  <ol>
+    <li><strong>Welcome.</strong> Tap <strong>Let’s go</strong>. Returning players tap <strong>I already have an account</strong>.</li>
+    <li><strong>Age.</strong> Pick 12, 13–15 or 16+. This only keeps the experience age-appropriate.</li>
+    <li><strong>Quiz.</strong> Six quick questions find which topics interest you most, and Explore shows those first.</li>
+    <li><strong>Choose your wild friend.</strong> Sea Turtle (Ocean Reef), Red Panda (Forest Canopy) or Snow Leopard (Mountain Ledge), then one of three colours. The 3D preview shows it at home. This choice is permanent.</li>
+    <li><strong>Name it.</strong> Type a nickname or tap a suggestion.</li>
+    <li><strong>Create an account.</strong> A username and password, or <strong>Continue with Google</strong>. You can <strong>Skip for now</strong> and play as a guest, but friends and groups need an account.</li>
+    <li><strong>Save your recovery code.</strong> Username accounts get a code like <em>coral-lantern-tide-4821</em>. Screenshot it: it’s the only way back in if the password is forgotten.</li>
+    <li><strong>Meet your mascot.</strong> The habitat starts empty. Every real action you log helps it grow.</li>
+  </ol>
+  <div class="tip"><strong>Another device?</strong> Open the link, tap <strong>I already have an account</strong> and sign in. The whole habitat comes back, and you stay signed in until you sign out.</div>
+  <label class="fb" for="fb-start">Your thoughts: setup and choosing a mascot</label>
+  <textarea id="fb-start" data-key="fb.start" placeholder="Was anything unclear? Did the quiz feel right for a 12–16 year old?"></textarea>
+</div></section>
+
+<section id="home"><div class="card">
+  <h2>Your home habitat</h2>
+  <p>Home shows your mascot living in its 3D habitat. Drag to turn the scene; it also slowly rotates by itself.</p>
+  <p><strong>Top bar:</strong> your nickname and level (tap it for Profile &amp; settings), your Eco Points (EP), and your streak of days in a row with an action logged.</p>
+  <p><strong>On its own</strong> the turtle swims loops and banks into turns; the red panda and snow leopard wander, sit, look around, blink and twitch their ears. Tap the heart to make it wave.</p>
+  <p><strong>Happiness</strong> drops a little each day. Feed it to keep it happy; a hungry mascot moves slower and droops.</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Tile</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Feed</td><td>Give food bought in the Shop. The mascot eats with a little animation.</td></tr>
+      <tr><td>Dress</td><td>Wear accessories (hat, glasses, scarf, bandana, badge) in five colours each.</td></tr>
+      <tr><td>Build</td><td>Place, move, rotate or store decorations on your plot.</td></tr>
+      <tr><td>Play</td><td>Two mini-games once unlocked. Winning pays a small bonus once a day.</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Habitat growth:</strong> five stages from empty to flourishing, unlocked in the Shop with EP; higher stages also need a minimum level. Each stage adds visible life: seagrass, coral, fish and glowing plankton on the reef; nests, bamboo, fireflies, a treehouse and waterfall in the forest; pines, a stream, an aurora, a den and mountain goats on the mountain. The mascot celebrates with a spin and sparkles.</p>
+  <label class="fb" for="fb-home">Your thoughts: the habitat and your mascot</label>
+  <textarea id="fb-home" data-key="fb.home" placeholder="Do the mascots look close enough to the character sheets? Anything to change in shape, colour or markings?"></textarea>
+</div></section>
+
+<section id="missions"><div class="card">
+  <h2>Missions: real actions, real progress</h2>
+  <p>Do an eco action for real, then tap <strong>I did it</strong>. It works on trust, with no photos or proof. There are 30 actions across Energy, Water, Waste, Transport, Food and Community, each with a line on why it matters.</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Kind</th><th>Example</th><th>Reward</th><th>Limit</th></tr></thead>
+    <tbody>
+      <tr><td>Quick</td><td>Turn off an unused light</td><td>10 XP + 10 EP</td><td>3 per day</td></tr>
+      <tr><td>Meaningful</td><td>Use a fan instead of AC for an hour</td><td>40 XP + 40 EP</td><td>2 per day</td></tr>
+      <tr><td>Big weekly</td><td>Join a local clean-up</td><td>150 XP + 150 EP</td><td>1 per week</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Streaks:</strong> at 3 days in a row every action earns 20% more EP, at 7 days 50% more. Missing a day starts again.</p>
+  <p><strong>XP</strong> raises your level, which unlocks the bigger habitat stages. <strong>EP</strong> is what you spend in the Shop.</p>
+  <label class="fb" for="fb-missions">Your thoughts: missions and rewards</label>
+  <textarea id="fb-missions" data-key="fb.missions" placeholder="Are the actions realistic for teens in India? Do rewards feel too fast, too slow, or about right?"></textarea>
+</div></section>
+
+<section id="shop"><div class="card">
+  <h2>Shop: spending Eco Points</h2>
+  <p>Everything is cosmetic: EP never buys an advantage. Tap an item for details, then <strong>Buy</strong>. If you can’t afford it yet, it says how many more EP you need.</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Section</th><th>Items</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Food</td><td>Three foods per mascot, named for its species</td><td>50–400 EP</td></tr>
+      <tr><td>Decorations</td><td>Plant pot, rock, lantern, prayer flags, water feature; buildables: compost bin, bird house, bee hotel, rain barrel, solar lamp</td><td>120–500 EP</td></tr>
+      <tr><td>Accessories</td><td>Bandana, badge, hat, scarf, glasses (pick the colour when wearing)</td><td>80–250 EP</td></tr>
+      <tr><td>Habitat</td><td>The next growth stage; needs the previous stage and level 1, 3, 6 or 10</td><td>300–3,000 EP</td></tr>
+      <tr><td>Mini-games</td><td>Matching and Treat toss</td><td>200 EP each</td></tr>
+    </tbody>
+  </table></div>
+  <label class="fb" for="fb-shop">Your thoughts: the shop and prices</label>
+  <textarea id="fb-shop" data-key="fb.shop" placeholder="Anything you wanted to buy but couldn't find? Prices fair?"></textarea>
+</div></section>
+
+<section id="roam"><div class="card">
+  <h2>Walk around and Build mode</h2>
+  <p><strong>Walk around</strong> (button near the top right of Home) puts you in control of your mascot on a wider island that fills in as your habitat grows.</p>
+  <ul>
+    <li><strong>Move:</strong> drag the joystick at bottom left, or use W A S D / arrow keys. The camera follows.</li>
+    <li><strong>Jump</strong> (<strong>Spin</strong> for the turtle) and <strong>Wave</strong> are at bottom right.</li>
+    <li><strong>Clean up litter:</strong> eight pieces appear each day with a glowing yellow ring. Walk over one to pick it up for 2 EP and a short fact about that kind of waste.</li>
+  </ul>
+  <p><strong>Build mode</strong> (the Build tile on Home) shows your plot from above:</p>
+  <ol>
+    <li>Tap a decoration on the plot, or one in <strong>Storage</strong>.</li>
+    <li>Tap or drag on the ground. Green ring = the spot works; red = too close to something, too near the middle, or off the edge.</li>
+    <li>Tap ⟳ to rotate, then <strong>Move here</strong> or <strong>Place</strong>. <strong>Store</strong> puts it away.</li>
+  </ol>
+  <p class="small">The plot holds 6 decorations at the first stage, rising to 18 at the last.</p>
+  <label class="fb" for="fb-roam">Your thoughts: walking around and building</label>
+  <textarea id="fb-roam" data-key="fb.roam" placeholder="Was it smooth on your phone? Easy to control? Fun?"></textarea>
+</div></section>
+
+<section id="explore"><div class="card">
+  <h2>Explore: learning</h2>
+  <p>30 short reads, five per topic, about two minutes each. <strong>For you</strong> puts your top quiz topics first; chips filter by topic.</p>
+  <p>Each read has a picture header, short paragraphs, a <strong>Did you know?</strong> fact, a linked source, and a <strong>Try this</strong> button that jumps to a related action. Tap <strong>Mark as read</strong> at the end. Some reads unlock as your habitat grows.</p>
+  <div class="tip">All 30 reads are drafts pending review. Checks on accuracy and tone for 12–16 year-olds are very welcome.</div>
+  <label class="fb" for="fb-explore">Your thoughts: the reads</label>
+  <textarea id="fb-explore" data-key="fb.explore" placeholder="Name any read that is inaccurate, too long, or pitched wrong."></textarea>
+</div></section>
+
+<section id="social"><div class="card">
+  <h2>Friends and groups</h2>
+  <p>The <strong>Friends</strong> tab needs an account. A small dot on the tab means something is waiting: a friend request, a trade or an unread message.</p>
+  <h3>Friends</h3>
+  <ul>
+    <li><strong>Add a friend</strong> by their exact username, or share your invite link or QR code. There’s no public search, so strangers can’t find you.</li>
+    <li><strong>Visit</strong> a friend to see their live 3D habitat, level, streak and this week’s progress.</li>
+    <li><strong>High five</strong> a friend once a day: you both get 5 EP.</li>
+    <li><strong>Leaderboard:</strong> this week’s EP, actions or streak. Resets every Monday.</li>
+  </ul>
+  <h3>Groups (up to 30 people)</h3>
+  <ul>
+    <li><strong>New group:</strong> pick a name and icon, then share the 6-letter code or invite link.</li>
+    <li><strong>Chat:</strong> type, tap 💬 for quick phrases, or tap <strong>+</strong> to share your latest action, habitat, an article or the group challenge. Tap a message to react or report it.</li>
+    <li><strong>Challenge:</strong> the owner picks a weekly team goal; everyone’s actions count; each member taps <strong>Claim</strong> for the reward when it’s reached.</li>
+    <li><strong>Members:</strong> group leaderboard, invite code, and owner tools.</li>
+  </ul>
+  <h3>Trading and gifts</h3>
+  <ul>
+    <li><strong>Swap</strong> food and decorations with a friend. Both sides must be within 25% of each other in value; the screen shows “Fair trade ✓”.</li>
+    <li><strong>Gift</strong> items up to 200 EP with nothing asked back.</li>
+    <li>Up to 3 a day. Offered items are held until your friend answers; offers expire after 48 hours. Eco Points can’t be traded.</li>
+  </ul>
+  <label class="fb" for="fb-social">Your thoughts: friends, groups and trading</label>
+  <textarea id="fb-social" data-key="fb.social" placeholder="Would families and classes use this? Anything that feels unsafe or confusing?"></textarea>
+</div></section>
+
+<section id="safety"><div class="card">
+  <h2>Safety and privacy</h2>
+  <ul>
+    <li><strong>Stored:</strong> nickname, username, age band, quiz answers and game progress. No real name, location, contacts, camera or microphone. Google sign-in (optional) stores a Google email.</li>
+    <li><strong>Chat filter:</strong> bad language is blocked before sending, including spaced (f u c k), symbol (f**k), number (sh1t), Hinglish and Hindi-script spellings. Phone numbers, emails, links, social handles and requests to meet or send photos are blocked too.</li>
+    <li><strong>Limits:</strong> one message every 2 seconds, 60 an hour.</li>
+    <li><strong>Block and report</strong> from a friend’s page (⋯). Reports are private and go to the Wildkin team. Group owners can remove members and delete messages.</li>
+    <li><strong>Settings</strong> (tap your name on Home): nickname, password, recovery code, sign out, 3D quality, sounds, motion, analytics opt-out, and <strong>Delete my data</strong>.</li>
+  </ul>
+  <label class="fb" for="fb-safety">Your thoughts: safety for this age group</label>
+  <textarea id="fb-safety" data-key="fb.safety" placeholder="Anything a parent or school would want changed?"></textarea>
+</div></section>
+
+<section id="checklist"><div class="card">
+  <h2>Test checklist</h2>
+  <p>Mark each item <strong>✓ Works</strong> or <strong>⚠ Problem</strong>. A problem opens a box to describe what happened. About 30 minutes on your own and 15 with a second person.</p>
+  <div class="progress" aria-hidden="true"><div id="prog"></div></div>
+  <div class="counts" id="counts"></div>
+  <h3>On your own</h3>
+  <ul class="check" id="check-solo"></ul>
+  <h3>With a second person (a colleague or a second phone)</h3>
+  <ul class="check" id="check-duo"></ul>
+</div></section>
+
+<section id="feedback"><div class="card">
+  <h2>Overall feedback</h2>
+  <p>The most useful feedback says what you did, what you expected, and what happened, plus your phone model if something looked wrong or slow.</p>
+  <label class="fb" for="fb-first">First impressions: is it clear what to do in the first two minutes?</label>
+  <textarea id="fb-first" data-key="q.first"></textarea>
+  <label class="fb" for="fb-pace">Pace: do rewards and habitat growth feel too fast, too slow, or about right?</label>
+  <textarea id="fb-pace" data-key="q.pace"></textarea>
+  <label class="fb" for="fb-perf">Performance: which phone did you use, and was it smooth?</label>
+  <textarea id="fb-perf" data-key="q.perf"></textarea>
+  <label class="fb" for="fb-top">Top three things to change before launch</label>
+  <textarea id="fb-top" data-key="q.top" style="min-height:110px"></textarea>
+  <label class="fb" for="fb-other">Anything else</label>
+  <textarea id="fb-other" data-key="q.other" style="min-height:110px"></textarea>
+  <h3>Known limitations in this version</h3>
+  <ul class="small">
+    <li>Three mascots so far; the sparrow and squirrel need character art first.</li>
+    <li>No push notifications yet; friends see updates when they open the app.</li>
+    <li>The chat filter catches words, not intent; reports need regular review.</li>
+    <li>Leaderboards and trades are fair for normal players but not fully cheat-proof on the free Firebase plan.</li>
+  </ul>
+  <div class="row no-print" style="margin-top:18px">
+    <button class="pill-btn" id="send2" type="button">Send feedback</button>
+    <button class="pill-btn ghost" id="download" type="button">Download a copy</button>
+    <button class="pill-btn ghost" id="print" type="button">Print / PDF</button>
+  </div>
+  <p class="small" id="sent-note"></p>
+</div></section>
+</main>
+
+<div class="bar no-print">
+  <div class="inner">
+    <div class="status" id="status">Saved on this device</div>
+    <button class="pill-btn accent" id="send" type="button">Send feedback</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const FIREBASE = { projectId: 'wildkin-45b02', apiKey: 'AIzaSyAzruknn-t7v3Hxp7xeDj3gEOZvrio7zrE' }
+  const STORE = 'wildkin-guide-v1'
+
+  const SOLO = [
+    ['install', 'Install the app on your phone and open it from the home screen'],
+    ['setup', 'Go through setup, pick a mascot and colour, create an account, save the recovery code'],
+    ['actions', 'Log a quick, a meaningful and a big action in Missions'],
+    ['rewards', 'See EP and XP go up and the reward popup appear'],
+    ['feed', 'Buy a food and feed your mascot; watch it eat'],
+    ['dress', 'Buy an accessory, wear it, try a few colours'],
+    ['build', 'Buy a decoration or buildable and move it in Build mode'],
+    ['tier', 'Unlock the first habitat stage and watch the celebration'],
+    ['roam', 'Walk around the island and collect at least one piece of litter'],
+    ['explore', 'Read an Explore article and use its Try this button'],
+    ['minigame', 'Unlock and play one mini-game'],
+    ['signin', 'Sign out, then sign back in on another phone or browser'],
+    ['recover', 'Use Forgot your password? with your recovery code'],
+  ]
+  const DUO = [
+    ['friend', 'Add each other as friends and accept the request'],
+    ['visit', 'Visit each other’s habitat and send a high five'],
+    ['trade', 'Send a trade offer and accept it on the other phone'],
+    ['group', 'Create a group and join it with the code or invite link'],
+    ['chat', 'Chat, use a quick phrase, share a game card, react to a message'],
+    ['filter', 'Try sending a rude word and check it’s blocked'],
+    ['challenge', 'Set a weekly group challenge and check both players’ actions count'],
+    ['board', 'Compare the leaderboard on both phones'],
+  ]
+
+  let state = { name: '', fields: {}, checks: {}, notes: {}, sentAt: null }
+  try { state = Object.assign(state, JSON.parse(localStorage.getItem(STORE) || '{}')) } catch (e) {}
+  const save = () => {
+    try { localStorage.setItem(STORE, JSON.stringify(state)) } catch (e) {}
+    status()
+  }
+
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+  function renderList(el, items) {
+    el.innerHTML = items.map(([id, text]) => `
+      <li data-id="${id}">
+        <div class="ck-row">
+          <div class="ck-text">${esc(text)}</div>
+          <div class="ck-btns" role="group" aria-label="${esc(text)}">
+            <button type="button" class="ok" data-v="ok" aria-pressed="false">✓ Works</button>
+            <button type="button" class="bad" data-v="bad" aria-pressed="false">⚠ Problem</button>
+          </div>
+        </div>
+        <div class="ck-note"><textarea data-note="${id}" placeholder="What happened? Which phone?"></textarea></div>
+      </li>`).join('')
+  }
+  renderList(document.getElementById('check-solo'), SOLO)
+  renderList(document.getElementById('check-duo'), DUO)
+
+  function paintChecks() {
+    document.querySelectorAll('.check li').forEach((li) => {
+      const v = state.checks[li.dataset.id] || ''
+      li.classList.toggle('done-ok', v === 'ok')
+      li.classList.toggle('done-bad', v === 'bad')
+      li.querySelectorAll('.ck-btns button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === v)))
+    })
+    const all = SOLO.length + DUO.length
+    const vals = Object.values(state.checks)
+    const ok = vals.filter((v) => v === 'ok').length
+    const bad = vals.filter((v) => v === 'bad').length
+    document.getElementById('prog').style.width = `${((ok + bad) / all) * 100}%`
+    document.getElementById('counts').textContent = `${ok + bad} of ${all} tried · ${ok} working · ${bad} with a problem`
+  }
+
+  document.querySelectorAll('.check').forEach((ul) =>
+    ul.addEventListener('click', (e) => {
+      const b = e.target.closest('.ck-btns button')
+      if (!b) return
+      const id = b.closest('li').dataset.id
+      state.checks[id] = state.checks[id] === b.dataset.v ? '' : b.dataset.v
+      paintChecks()
+      save()
+      if (state.checks[id] === 'bad') b.closest('li').querySelector('textarea').focus()
+    }),
+  )
+
+  // text fields
+  document.querySelectorAll('[data-key]').forEach((el) => {
+    const k = el.dataset.key
+    el.value = k === 'name' ? state.name : state.fields[k] || ''
+    el.addEventListener('input', () => {
+      if (k === 'name') state.name = el.value
+      else state.fields[k] = el.value
+      save()
+    })
+  })
+  document.querySelectorAll('[data-note]').forEach((el) => {
+    el.value = state.notes[el.dataset.note] || ''
+    el.addEventListener('input', () => {
+      state.notes[el.dataset.note] = el.value
+      save()
+    })
+  })
+  paintChecks()
+
+  function status() {
+    const s = document.getElementById('status')
+    s.innerHTML = state.sentAt
+      ? `Saved on this device · <strong>last sent ${new Date(state.sentAt).toLocaleString()}</strong>`
+      : 'Saved on this device · <strong>not sent yet</strong>'
+  }
+  status()
+
+  const toast = (msg) => {
+    const t = document.getElementById('toast')
+    t.textContent = msg
+    t.classList.add('show')
+    clearTimeout(toast.h)
+    toast.h = setTimeout(() => t.classList.remove('show'), 3200)
+  }
+
+  const labelOf = (id) => ([...SOLO, ...DUO].find((x) => x[0] === id) || [id, id])[1]
+  function report() {
+    const lines = [`Wildkin tester feedback`, `From: ${state.name || '(no name)'}`, `Date: ${new Date().toLocaleString()}`, '']
+    lines.push('CHECKLIST')
+    for (const [id, text] of [...SOLO, ...DUO]) {
+      const v = state.checks[id]
+      lines.push(`${v === 'ok' ? '[✓]' : v === 'bad' ? '[!]' : '[ ]'} ${text}`)
+      if (v === 'bad' && state.notes[id]) lines.push(`      ${state.notes[id]}`)
+    }
+    lines.push('')
+    document.querySelectorAll('textarea[data-key]').forEach((el) => {
+      const v = (state.fields[el.dataset.key] || '').trim()
+      if (!v) return
+      const label = document.querySelector(`label[for="${el.id}"]`)?.textContent || el.dataset.key
+      lines.push(label.toUpperCase(), v, '')
+    })
+    return lines.join('\n')
+  }
+
+  // Firestore REST encoding
+  const fv = (v) =>
+    typeof v === 'string' ? { stringValue: v }
+    : typeof v === 'number' ? { integerValue: String(Math.round(v)) }
+    : v && typeof v === 'object' ? { mapValue: { fields: Object.fromEntries(Object.entries(v).map(([k, x]) => [k, fv(x)])) } }
+    : { nullValue: null }
+
+  async function send() {
+    const btns = [document.getElementById('send'), document.getElementById('send2')]
+    btns.forEach((b) => (b.disabled = true))
+    const checklist = {}
+    for (const [id] of [...SOLO, ...DUO]) checklist[id] = { result: state.checks[id] || '', note: (state.notes[id] || '').slice(0, 2000) }
+    const answers = {}
+    for (const [k, v] of Object.entries(state.fields)) if ((v || '').trim()) answers[k.replace(/\./g, '_')] = v.slice(0, 5000)
+    const body = {
+      fields: {
+        name: fv((state.name || '').slice(0, 80)),
+        checklist: fv(checklist),
+        answers: fv(answers),
+        report: fv(report().slice(0, 40000)),
+        userAgent: fv(navigator.userAgent.slice(0, 300)),
+        sentAt: { timestampValue: new Date().toISOString() },
+      },
+    }
+    try {
+      const r = await fetch(`https://firestore.googleapis.com/v1/projects/${FIREBASE.projectId}/databases/(default)/documents/feedback?key=${FIREBASE.apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
+      state.sentAt = Date.now()
+      save()
+      document.getElementById('sent-note').textContent = 'Thank you! Your feedback was sent. You can keep editing and send again; each send is kept.'
+      toast('Feedback sent. Thank you! 🌿')
+    } catch (e) {
+      toast('Could not send right now. Your answers are saved; try again, or use Download a copy.')
+    } finally {
+      btns.forEach((b) => (b.disabled = false))
+    }
+  }
+  document.getElementById('send').addEventListener('click', send)
+  document.getElementById('send2').addEventListener('click', send)
+  document.getElementById('download').addEventListener('click', () => {
+    const blob = new Blob([report()], { type: 'text/plain' })
+    const a = document.createElement('a')
+    a.href = URL.createObjectURL(blob)
+    a.download = `wildkin-feedback-${(state.name || 'tester').replace(/\W+/g, '-').toLowerCase()}.txt`
+    a.click()
+    URL.revokeObjectURL(a.href)
+  })
+  document.getElementById('print').addEventListener('click', () => window.print())
+})()
+</script>
+</body>
+</html>
