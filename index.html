@@ -231,8 +231,9 @@
     <li><strong>Add a friend</strong> by their exact username, or share your invite link or QR code. There’s no public search, so strangers can’t find you.</li>
     <li><strong>Visit</strong> a friend to see their live 3D habitat, level, streak and this week’s progress.</li>
     <li><strong>High five</strong> a friend once a day: you both get 5 EP.</li>
-    <li><strong>Leaderboard:</strong> this week’s EP, actions or streak. Resets every Monday.</li>
+    <li><strong>Leaderboard:</strong> this week’s EP, actions or streak. Resets every Monday. Tap anyone on it to visit their habitat.</li>
   </ul>
+  <div class="tip"><strong>Which code goes where?</strong> To add a <strong>friend</strong>, type their <strong>username</strong> or open their invite link. The 6-letter <strong>group code</strong> only works in <strong>Groups → Join with code</strong>. The recovery code is only for resetting a forgotten password.</div>
   <h3>Groups (up to 30 people)</h3>
   <ul>
     <li><strong>New group:</strong> pick a name and icon, then share the 6-letter code or invite link.</li>
@@ -332,10 +333,13 @@
     ['recover', 'Use Forgot your password? with your recovery code'],
   ]
   const DUO = [
-    ['friend', 'Add each other as friends and accept the request'],
+    ['friend', 'Add each other as friends by username and accept the request'],
+    ['friendlink', 'Add a friend by sharing your invite link instead'],
     ['visit', 'Visit each other’s habitat and send a high five'],
-    ['trade', 'Send a trade offer and accept it on the other phone'],
-    ['group', 'Create a group and join it with the code or invite link'],
+    ['trade', 'Send a trade offer and accept it; send another and decline it'],
+    ['group', 'Create a group; join it once with the invite link and once by typing the code'],
+    ['gift', 'Send a gift and receive it on the other phone'],
+    ['block', 'Leave a group, and try Report and Block on a friend'],
     ['chat', 'Chat, use a quick phrase, share a game card, react to a message'],
     ['filter', 'Try sending a rude word and check it’s blocked'],
     ['challenge', 'Set a weekly group challenge and check both players’ actions count'],
