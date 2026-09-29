@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>Wildkin Requirements</title>
+<meta name="description" content="Tell us your preferences for every part of Wildkin." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest: #2d6a4f; --sage: #40916c; --sage-light: #74c69d; --orange: #f4a261; --cream: #f1faee; --ink: #1b4332; --ink-soft: #52796f; --mist: #e3efe8;
+    --ok-bg: #ddf5e6; --chg: #fff1d6; --chg-ink: #9a5a12; --del: #fde2df; --del-ink: #b3261e; --new: #e0ecfb; --new-ink: #2f63b8;
+    --line: rgba(27, 67, 50, 0.1); --shadow: 0 6px 20px -8px rgb(27 67 50 / 0.18), 0 2px 6px -2px rgb(27 67 50 / 0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font: 400 16px/1.5 Fredoka, ui-rounded, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--forest); font-weight: 600; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px 130px; }
+  header.hero { background: linear-gradient(160deg, #d8f3dc, var(--cream) 70%); padding: 36px 16px 22px; }
+  header.hero .wrap { padding-bottom: 0; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 48px; height: 48px; border-radius: 15px; background: linear-gradient(135deg, var(--sage), var(--forest)); display: grid; place-items: center; font-size: 26px; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(28px, 5.5vw, 40px); line-height: 1.1; margin: 16px 0 8px; }
+  .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 14px; max-width: 720px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; font-size: 14px; }
+  .legend span { padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+  nav.toc { position: sticky; top: 0; z-index: 5; background: rgba(241,250,238,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav.toc .wrap { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  nav.toc a { flex: none; text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 999px; background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  nav.toc a.touched::after { content: " •"; color: var(--orange); }
+  section { margin-top: 26px; scroll-margin-top: 60px; }
+  .card { background: #fff; border-radius: 20px; box-shadow: var(--shadow); padding: 20px; }
+  h2 { font-size: 26px; margin: 0 0 4px; }
+  h3 { font-size: 18px; margin: 20px 0 6px; }
+  .sub { color: var(--ink-soft); margin: 4px 0 10px; font-size: 15px; }
+  .q { margin: 16px 0; padding: 14px; border-radius: 16px; background: #f7fbf8; }
+  .q > .qt { font-weight: 600; margin-bottom: 8px; }
+  .q .hint { font-size: 13px; color: var(--ink-soft); margin: -4px 0 8px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: #fff; border: 2px solid var(--mist); cursor: pointer; font-size: 15px; user-select: none; }
+  .opt input { accent-color: var(--forest); width: 18px; height: 18px; margin: 0; }
+  .opt:has(input:checked) { border-color: var(--sage); background: var(--ok-bg); }
+  .opt .cur { font-size: 12px; color: var(--ink-soft); }
+  input[type=text], input[type=number], textarea, select { font: 15px/1.4 Fredoka, sans-serif; color: var(--ink); border: 2px solid var(--mist); border-radius: 12px; padding: 8px 10px; background: #fbfefc; width: 100%; }
+  input[type=number] { max-width: 110px; }
+  textarea { resize: vertical; min-height: 70px; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--sage-light); background: #fff; }
+  .notes textarea { min-height: 90px; }
+  label.lbl { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin: 14px 0 4px; }
+  /* editable tables */
+  .tbl { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+  .tbl th { text-align: left; font-size: 12px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; padding: 0 6px; }
+  .tbl td { padding: 6px; vertical-align: top; background: #f7fbf8; }
+  .tbl td:first-child { border-radius: 12px 0 0 12px; }
+  .tbl td:last-child { border-radius: 0 12px 12px 0; }
+  .tbl tr.st-change td { background: var(--chg); }
+  .tbl tr.st-remove td { background: var(--del); }
+  .tbl tr.st-remove td input, .tbl tr.st-remove td textarea { text-decoration: line-through; opacity: .6; }
+  .tbl tr.st-new td { background: var(--new); }
+  .tbl td.stc { width: 118px; }
+  .tbl td.stc select { font-weight: 600; }
+  .tbl textarea { min-height: 40px; }
+  .tbl-scroll { overflow-x: auto; margin: 0 -6px; padding: 0 6px; }
+  .tbl-scroll .tbl { min-width: 640px; }
+  .add { margin-top: 6px; border: 2px dashed var(--sage-light); background: transparent; color: var(--forest); font: 600 15px Fredoka, sans-serif; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+  .blk { border: 2px solid var(--mist); border-radius: 16px; padding: 14px; margin: 12px 0; }
+  .blk.st-change { border-color: #f2c98a; background: #fffaf1; }
+  .blk.st-remove { border-color: #f2b1ab; background: #fff6f5; }
+  .blk.st-new { border-color: #a9c7f0; background: #f5f9ff; }
+  .blk-head { display: flex; align-items: center; gap: 10px; }
+  .blk-head .t { flex: 1; font-weight: 700; font-size: 18px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
+  .field { display: flex; flex-direction: column; }
+  .field span { font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 3px; }
+  .num-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+  .num-row:first-child { border-top: 0; }
+  .num-row .l { flex: 1; }
+  .num-row .l small { display: block; color: var(--ink-soft); font-size: 13px; }
+  .num-row input.changed { border-color: #f2c98a; background: var(--chg); }
+  .pill-btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 999px; border: 0; background: var(--forest); color: #fff; font: 600 16px Fredoka, sans-serif; text-decoration: none; cursor: pointer; box-shadow: 0 6px 16px -6px rgba(45,106,79,.6); }
+  .pill-btn.ghost { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  .pill-btn.accent { background: var(--orange); color: var(--ink); }
+  .pill-btn:disabled { opacity: .5; cursor: default; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+  .bar .inner { max-width: 980px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .bar .status { flex: 1; min-width: 0; font-size: 14px; color: var(--ink-soft); }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; background: #b8c9c0; vertical-align: middle; }
+  .dot.ok { background: #3aa76d; } .dot.busy { background: var(--orange); } .dot.err { background: #e5484d; }
+  .toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 14px; font-size: 15px; transition: .25s; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .gate { max-width: 560px; margin: 60px auto; text-align: center; }
+  .swatches { display: inline-flex; gap: 4px; vertical-align: middle; margin-left: 6px; }
+  .swatches i { width: 16px; height: 16px; border-radius: 50%; display: inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+  @media (max-width: 640px) {
+    .card { padding: 16px; }
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .bar .inner { gap: 8px; }
+    .pill-btn { height: 42px; padding: 0 14px; font-size: 15px; }
+    .tbl-scroll { overflow: visible; margin: 0; padding: 0; }
+    .tbl, .tbl-scroll .tbl { min-width: 0 !important; }
+    .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; width: auto !important; }
+    .tbl thead { display: none; }
+    .tbl tr { background: #f7fbf8; border-radius: 14px; padding: 8px; margin-bottom: 10px; }
+    .tbl tr.st-change { background: var(--chg); } .tbl tr.st-remove { background: var(--del); } .tbl tr.st-new { background: var(--new); }
+    .tbl td, .tbl tr[class] td { background: transparent; border-radius: 0; padding: 3px 2px; }
+    .tbl td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+    .tbl td.stc select { max-width: 140px; }
+    .tbl input[type=number] { max-width: 100%; } .num-row input { max-width: 90px; }
+  }
+  @media print { nav.toc, .bar, .toast, .add, .no-print { display: none !important; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const FIREBASE = { projectId: 'wildkin-45b02', apiKey: 'AIzaSyAzruknn-t7v3Hxp7xeDj3gEOZvrio7zrE' }
+  const DOC_URL = (k) => `https://firestore.googleapis.com/v1/projects/${FIREBASE.projectId}/databases/(default)/documents/requirements/${k}?key=${FIREBASE.apiKey}`
+  const params = new URLSearchParams(location.search)
+  const KEY = params.get('k') || ''
+  const LOCAL = `wildkin-req-${KEY}`
+  const app = document.getElementById('app')
+
+  // ------------------------------------------------------------------ tiny DOM helper
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag)
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v === undefined || v === null || v === false) continue
+      if (k === 'class') el.className = v
+      else if (k.startsWith('on')) el.addEventListener(k.slice(2), v)
+      else if (k === 'value') el.value = v
+      else if (k === 'checked') el.checked = v
+      else if (k === 'html') el.innerHTML = v
+      else el.setAttribute(k, v === true ? '' : v)
+    }
+    for (const kid of kids.flat()) if (kid !== null && kid !== undefined && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)))
+    return el
+  }
+  const clone = (x) => JSON.parse(JSON.stringify(x))
+  const toast = (msg) => {
+    const t = document.getElementById('toast')
+    t.textContent = msg
+    t.classList.add('show')
+    clearTimeout(toast.h)
+    toast.h = setTimeout(() => t.classList.remove('show'), 3200)
+  }
+
+  if (!/^[A-Za-z0-9]{24,48}$/.test(KEY)) {
+    app.append(
+      h('div', { class: 'gate card' },
+        h('div', { class: 'logo', style: 'margin:0 auto' }, '🌿'),
+        h('h1', {}, 'Wildkin requirements'),
+        h('p', { class: 'lead', style: 'margin:0 auto 18px' }, 'This form needs your private link. Please use the link you were sent, or start a fresh response below.'),
+        h('button', { class: 'pill-btn', onclick: () => { const a = new Uint8Array(24); crypto.getRandomValues(a); const k = [...a].map((b) => 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 56]).join(''); location.search = `?k=${k}` } }, 'Start a new response'),
+      ),
+    )
+    return
+  }
+
+  // ------------------------------------------------------------------ state
+  let D = null // defaults from the game
+  let S = null // her answers: { name, role, status, data: copy of defaults with _st on rows, q: {}, notes: {} }
+  let saveTimer = null
+  let saveState = 'idle'
+  let lastSaved = null
+
+  const OPT = { keep: 'Keep', change: 'Change', remove: 'Remove', new: 'New' }
+  const statusSel = (row, onChange) => {
+    const sel = h('select', { 'aria-label': 'Keep, change or remove', onchange: (e) => { row._st = e.target.value; onChange(); changed() } },
+      ...(row._st === 'new' ? ['new'] : ['keep', 'change', 'remove']).map((v) => h('option', { value: v, selected: (row._st || 'keep') === v }, OPT[v])))
+    return sel
+  }
+
+  function changed() {
+    S.updatedAt = Date.now()
+    try { localStorage.setItem(LOCAL, JSON.stringify(S)) } catch (e) {}
+    markTouched()
+    clearTimeout(saveTimer)
+    setSave('busy')
+    saveTimer = setTimeout(pushToCloud, 1500)
+  }
+
+  function setSave(st, msg) {
+    saveState = st
+    const el = document.getElementById('savestatus')
+    if (!el) return
+    const dot = st === 'ok' ? 'ok' : st === 'busy' ? 'busy' : st === 'err' ? 'err' : ''
+    const text = st === 'ok' ? `Saved to the cloud ${new Date(lastSaved).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : st === 'busy' ? 'Saving…' : st === 'err' ? (msg || 'Offline: saved on this device, will retry') : 'All changes save automatically'
+    el.innerHTML = `<span class="dot ${dot}"></span>${text}${S.status === 'submitted' ? ' · <strong>Submitted ✓</strong>' : ''}`
+  }
+
+  const fv = (v) => typeof v === 'string' ? { stringValue: v } : typeof v === 'number' ? { integerValue: String(Math.round(v)) } : { nullValue: null }
+  async function pushToCloud() {
+    const body = { fields: { name: fv((S.name || '').slice(0, 80)), status: fv(S.status || 'draft'), version: fv(1), data: fv(JSON.stringify(S)), updatedAt: { timestampValue: new Date().toISOString() } } }
+    try {
+      const r = await fetch(DOC_URL(KEY), { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
+      lastSaved = Date.now()
+      setSave('ok')
+    } catch (e) {
+      setSave('err')
+      clearTimeout(saveTimer)
+      saveTimer = setTimeout(pushToCloud, 15000)
+    }
+  }
+
+  // merge saved answers onto defaults (saved wins; defaults fill anything new)
+  function merge(def, saved) {
+    if (Array.isArray(def)) return Array.isArray(saved) ? saved : def
+    if (def && typeof def === 'object') {
+      const out = {}
+      for (const k of Object.keys(def)) out[k] = saved && k in saved ? merge(def[k], saved[k]) : clone(def[k])
+      return out
+    }
+    return saved !== undefined ? saved : def
+  }
+
+  // ------------------------------------------------------------------ building blocks
+  function question(id, text, options, { multi = false, current, hint, other = true } = {}) {
+    const val = S.q[id] ?? (multi ? [] : '')
+    const name = `q-${id}`
+    const wrap = h('div', { class: 'q' }, h('div', { class: 'qt' }, text), hint ? h('div', { class: 'hint' }, hint) : null)
+    const opts = h('div', { class: 'opts' })
+    for (const o of options) {
+      const checked = multi ? val.includes(o) : val === o
+      opts.append(h('label', { class: 'opt' },
+        h('input', { type: multi ? 'checkbox' : 'radio', name, value: o, checked, onchange: (e) => {
+          if (multi) { const set = new Set(S.q[id] || []); e.target.checked ? set.add(o) : set.delete(o); S.q[id] = [...set] } else S.q[id] = o
+          changed()
+        } }),
+        o, current === o ? h('span', { class: 'cur' }, '(current)') : null))
+    }
+    wrap.append(opts)
+    if (other) wrap.append(h('input', { type: 'text', placeholder: 'Other / details (optional)', value: S.q[`${id}__other`] || '', style: 'margin-top:8px', oninput: (e) => { S.q[`${id}__other`] = e.target.value; changed() } }))
+    return wrap
+  }
+
+  function textQ(id, text, { hint, placeholder, rows = 3 } = {}) {
+    return h('div', { class: 'q' }, h('div', { class: 'qt' }, text), hint ? h('div', { class: 'hint' }, hint) : null,
+      h('textarea', { rows, placeholder: placeholder || '', value: S.q[id] || '', oninput: (e) => { S.q[id] = e.target.value; changed() } }))
+  }
+
+  function notes(section, label) {
+    return h('div', { class: 'notes' }, h('label', { class: 'lbl' }, label || 'Anything else about this section'),
+      h('textarea', { value: S.notes[section] || '', placeholder: 'Ideas, priorities, things you love or want gone…', oninput: (e) => { S.notes[section] = e.target.value; changed() } }))
+  }
+
+  /** Editable table over an array of objects. cols: [{key, label, type:'text'|'area'|'number'|'select', options, width}] */
+  function table(rows, cols, { addLabel, blank, minWidth } = {}) {
+    const tbody = h('tbody')
+    const draw = () => {
+      tbody.replaceChildren(...rows.map((row) => {
+        const tr = h('tr', { class: `st-${row._st || 'keep'}` })
+        const touch = () => { if (!row._st || row._st === 'keep') { row._st = 'change'; tr.className = 'st-change'; tr.querySelector('select').value = 'change' } }
+        tr.append(h('td', { class: 'stc' }, statusSel(row, () => { tr.className = `st-${row._st}` })))
+        for (const c of cols) {
+          const v = row[c.key] ?? ''
+          let input
+          const on = (e) => { row[c.key] = c.type === 'number' ? Number(e.target.value) : e.target.value; touch(); changed() }
+          if (c.type === 'select') input = h('select', { onchange: on }, ...c.options.map((o) => h('option', { value: o, selected: v === o }, o)))
+          else if (c.type === 'area') input = h('textarea', { rows: 2, value: v, oninput: on })
+          else input = h('input', { type: c.type === 'number' ? 'number' : 'text', value: v, min: c.type === 'number' ? 0 : undefined, oninput: on })
+          tr.append(h('td', { style: c.width ? `width:${c.width}` : '', 'data-label': c.label }, input))
+        }
+        return tr
+      }))
+    }
+    draw()
+    const t = h('table', { class: 'tbl', style: minWidth ? `min-width:${minWidth}` : '' }, h('thead', {}, h('tr', {}, h('th', {}, ''), ...cols.map((c) => h('th', {}, c.label)))), tbody)
+    const add = addLabel ? h('button', { class: 'add', type: 'button', onclick: () => { rows.push({ ...clone(blank), _st: 'new' }); draw(); changed(); tbody.lastChild?.querySelector('input,textarea')?.focus() } }, `+ ${addLabel}`) : null
+    return h('div', {}, h('div', { class: 'tbl-scroll' }, t), add)
+  }
+
+  function numRow(obj, key, label, hint, { suffix } = {}) {
+    const def = obj['_def_' + key] ?? obj[key]
+    if (!('_def_' + key in obj)) obj['_def_' + key] = def
+    const inp = h('input', { type: 'number', value: obj[key], min: 0, class: obj[key] !== def ? 'changed' : '', oninput: (e) => { obj[key] = Number(e.target.value); inp.classList.toggle('changed', obj[key] !== def); changed() } })
+    return h('div', { class: 'num-row' }, h('div', { class: 'l' }, label, hint ? h('small', {}, `${hint} · currently ${def}${suffix || ''}`) : h('small', {}, `currently ${def}${suffix || ''}`)), inp, suffix ? h('span', { class: 'sub', style: 'margin:0' }, suffix) : null)
+  }
+
+  function field(obj, key, label, { area } = {}) {
+    const on = (e) => { obj[key] = e.target.value; if (obj._st === undefined || obj._st === 'keep') { obj._st = 'change'; syncBlk(e.target) }; changed() }
+    return h('label', { class: 'field' }, h('span', {}, label), area ? h('textarea', { rows: 2, value: obj[key] ?? '', oninput: on }) : h('input', { type: 'text', value: obj[key] ?? '', oninput: on }))
+  }
+  function syncBlk(el) {
+    const blk = el.closest('.blk')
+    if (!blk) return
+    blk.className = 'blk st-change'
+    const sel = blk.querySelector('.blk-head select')
+    if (sel) sel.value = 'change'
+  }
+
+  function section(id, title, sub, ...kids) {
+    return h('section', { id }, h('div', { class: 'card' }, h('h2', {}, title), sub ? h('p', { class: 'sub' }, sub) : null, ...kids))
+  }
+
+  function markTouched() {
+    document.querySelectorAll('nav.toc a').forEach((a) => {
+      const sec = document.querySelector(a.getAttribute('href'))
+      if (!sec) return
+      const touched = sec.querySelector('.st-change,.st-new,.st-remove,input.changed,input[type=checkbox]:checked,input[type=radio]:checked') || [...sec.querySelectorAll('.q textarea, .notes textarea, .q input[type=text]')].some((t) => t.value.trim())
+      a.classList.toggle('touched', Boolean(touched))
+    })
+  }
+
+  // ------------------------------------------------------------------ sections
+  function render() {
+    const d = S.data
+    const hero = h('header', { class: 'hero' }, h('div', { class: 'wrap' },
+      h('div', { class: 'brand' }, h('div', { class: 'logo' }, '🌿'), h('strong', { style: 'font-size:22px;color:var(--forest)' }, 'Wildkin')),
+      h('h1', {}, 'Your requirements for Wildkin'),
+      h('p', { class: 'lead' }, 'We built the first version. Now we’d like your preferences for every part of it. Everything below is filled in with what the game does today: keep it, change it, remove it, or add something new. You can come back to this page any time with the same link; it saves as you type.'),
+      h('div', { class: 'legend' }, h('span', { style: 'background:#f7fbf8' }, 'Keep'), h('span', { style: 'background:var(--chg);color:var(--chg-ink)' }, 'Change (edit the text)'), h('span', { style: 'background:var(--del);color:var(--del-ink)' }, 'Remove'), h('span', { style: 'background:var(--new);color:var(--new-ink)' }, 'New (added by you)')),
+      h('div', { class: 'grid2', style: 'max-width:640px;margin-top:10px' },
+        h('label', { class: 'field' }, h('span', {}, 'Your name'), h('input', { type: 'text', value: S.name || '', maxlength: 80, oninput: (e) => { S.name = e.target.value; changed() } })),
+        h('label', { class: 'field' }, h('span', {}, 'Your role'), h('input', { type: 'text', value: S.role || '', placeholder: 'e.g. Founder, teacher, product owner', oninput: (e) => { S.role = e.target.value; changed() } })),
+      ),
+      h('p', { class: 'sub no-print' }, 'Try the app while you fill this in: ', h('a', { href: 'https://wildkin-mu.vercel.app', target: '_blank', rel: 'noopener' }, 'wildkin-mu.vercel.app ↗')),
+    ))
+
+    const toc = h('nav', { class: 'toc', 'aria-label': 'Sections' }, h('div', { class: 'wrap' },
+      ...[['#goals', 'Goals'], ['#characters', 'Characters'], ['#onboarding', 'Onboarding'], ['#actions', 'Actions'], ['#points', 'Points'], ['#shop', 'Rewards shop'], ['#learning', 'Learning'], ['#social', 'Friends & groups'], ['#safety', 'Safety'], ['#brand', 'Look & feel'], ['#launch', 'Launch'], ['#final', 'Submit']].map(([href, t]) => h('a', { href }, t))))
+
+    const main = h('main', { class: 'wrap' })
+
+    // Goals
+    main.append(section('goals', 'Goals and audience', 'The big picture first; it shapes every answer below.',
+      textQ('goal', 'In one or two sentences, what should a player feel or do differently after a month of Wildkin?', { rows: 2 }),
+      question('ages', 'Who is it for?', ['12–16 year-olds (current)', 'Younger children (8–11)', 'Teens and young adults (13–21)', 'Families playing together', 'Schools and classrooms'], { multi: true }),
+      question('region', 'Where will most players be?', ['India (current: Indian examples and English)', 'India plus other countries', 'Global'], { current: 'India (current: Indian examples and English)' }),
+      question('languages', 'Languages', ['English only (current)', 'English + Hindi', 'English + Hindi + regional languages'], { current: 'English only (current)' }),
+      notes('goals'),
+    ))
+
+    // Characters
+    const chars = h('div')
+    const drawChars = () => {
+      chars.replaceChildren(...d.characters.map((c, i) => {
+        const blk = h('div', { class: `blk st-${c._st || 'keep'}` })
+        const head = h('div', { class: 'blk-head' }, h('div', { class: 't' }, c.name || 'New character', ' · ', h('span', { class: 'sub' }, c.habitatName || '')), statusSel(c, () => { blk.className = `blk st-${c._st}` }))
+        blk.append(head,
+          h('div', { class: 'grid2', style: 'margin-top:10px' },
+            field(c, 'name', 'Character'), field(c, 'habitatName', 'Habitat'),
+            field(c, 'teaches', 'What it teaches'), field(c, 'tagline', 'Tagline'),
+            field(c, 'traits', 'Personality (comma separated)'), field(c, 'foods', 'Its 3 foods (cheap → special)'),
+          ),
+          h('h3', {}, 'Colour options'),
+          table(c.variants, [{ key: 'name', label: 'Name' }, { key: 'tagline', label: 'Description', type: 'area' }, { key: 'colours', label: 'Colours (hex)' }], { addLabel: 'Add a colour option', blank: { name: '', tagline: '', colours: '' } }),
+          h('h3', {}, 'Habitat growth stages'),
+          h('p', { class: 'sub' }, 'What the home looks like at each of its five stages, from empty to flourishing.'),
+          table(c.stages, [{ key: 'name', label: 'Stage name', width: '28%' }, { key: 'description', label: 'What appears', type: 'area' }], { addLabel: 'Add a stage', blank: { name: '', description: '' } }),
+          h('label', { class: 'field', style: 'margin-top:10px' }, h('span', {}, 'Link to character art or references (optional)'), h('input', { type: 'text', value: c.artLink || '', placeholder: 'Google Drive, Figma, Pinterest…', oninput: (e) => { c.artLink = e.target.value; changed() } })),
+        )
+        return blk
+      }))
+    }
+    drawChars()
+    main.append(section('characters', 'Characters and their habitats', 'Each character comes with its own home that grows as the player does real eco actions. The 3D models were built from your character sheets.',
+      chars,
+      h('button', { class: 'add', type: 'button', onclick: () => { d.characters.push({ _st: 'new', name: '', habitatName: '', teaches: '', tagline: '', traits: '', foods: '', variants: [{ name: '', tagline: '', colours: '', _st: 'new' }], stages: ['Empty', 'Stage 1', 'Stage 2', 'Stage 3', 'Flourishing'].map((n) => ({ name: n, description: '', _st: 'new' })) }); drawChars(); changed() } }, '+ Add a character'),
+      question('nextChars', 'Which characters should come next?', ['House Sparrow (City Garden, urban wildlife)', 'Indian Palm Squirrel (Park, green spaces)', 'Olive Ridley turtle (separate from Sea Turtle)', 'Tiger', 'Elephant', 'Hornbill', 'Gangetic dolphin'], { multi: true }),
+      question('switchChar', 'Can a player change their character later?', ['Never, the pair is for keeps (current)', 'Once', 'Any time (keeps progress)', 'Collect more characters over time'], { current: 'Never, the pair is for keeps (current)' }),
+      question('style3d', 'How close should the 3D characters look to the character sheets?', ['Current look is fine', 'Closer: worth paying for professional 3D models', 'Simpler and more cartoony is fine'], {}),
+      notes('characters'),
+    ))
+
+    // Onboarding
+    const quizWrap = h('div')
+    const drawQuiz = () => {
+      quizWrap.replaceChildren(...d.onboarding.quiz.map((q, i) => {
+        const blk = h('div', { class: `blk st-${q._st || 'keep'}` })
+        blk.append(h('div', { class: 'blk-head' }, h('div', { class: 't' }, `Question ${i + 1}`), statusSel(q, () => { blk.className = `blk st-${q._st}` })),
+          h('div', { style: 'margin-top:8px' }, field(q, 'prompt', 'Question')),
+          h('div', { style: 'margin-top:8px' }, table(q.options, [{ key: 'emoji', label: 'Icon', width: '70px' }, { key: 'label', label: 'Answer' }, { key: 'pillars', label: 'Counts towards topics', width: '30%' }], { addLabel: 'Add an answer', blank: { emoji: '', label: '', pillars: '' } })))
+        return blk
+      }))
+    }
+    drawQuiz()
+    main.append(section('onboarding', 'Onboarding and the quiz', 'New players pick an age band, answer a short quiz, choose a character and colour, name it, then create an account or play as a guest. The quiz decides which learning topics they see first.',
+      h('div', { class: 'grid2' }, field(d.onboarding, 'ageBands', 'Age bands offered')),
+      h('h3', {}, 'Topics the quiz sorts players into'),
+      table(d.onboarding.pillars, [{ key: 'label', label: 'Topic', width: '32%' }, { key: 'blurb', label: 'Description', type: 'area' }], { addLabel: 'Add a topic', blank: { id: '', label: '', blurb: '' } }),
+      h('h3', {}, 'Quiz questions'),
+      quizWrap,
+      h('button', { class: 'add', type: 'button', onclick: () => { d.onboarding.quiz.push({ _st: 'new', prompt: '', options: [1, 2, 3, 4].map(() => ({ emoji: '', label: '', pillars: '', _st: 'new' })) }); drawQuiz(); changed() } }, '+ Add a question'),
+      question('quizLength', 'How long should the quiz be?', ['6 questions (current)', '3–4 questions', '8–10 questions', 'Skip the quiz'], { current: '6 questions (current)' }),
+      question('account', 'Accounts', ['Guest play allowed; account optional (current)', 'Account required from the start', 'Account required only for friends and groups'], { current: 'Guest play allowed; account optional (current)' }),
+      question('signin', 'Sign-in methods', ['Username + password (current)', 'Google (current)', 'Email link', 'Phone number (OTP)', 'School / class code'], { multi: true }),
+      question('consent', 'Parent or guardian consent', ['Not asked (current)', 'Ask for a parent email under 13', 'Ask for all under 18'], { current: 'Not asked (current)' }),
+      notes('onboarding'),
+    ))
+
+    // Actions
+    main.append(section('actions', 'Real-life actions', 'Players do an eco action in real life, then tap “I did it” to earn points. Each action has a category and a size (quick, meaningful or a big weekly challenge).',
+      h('h3', {}, 'Categories'),
+      table(d.actions.categories, [{ key: 'label', label: 'Category', width: '28%' }, { key: 'blurb', label: 'Short description', type: 'area' }], { addLabel: 'Add a category', blank: { id: '', label: '', blurb: '' } }),
+      h('h3', {}, `All actions (${d.actions.list.length})`),
+      table(d.actions.list, [
+        { key: 'category', label: 'Category', type: 'select', options: [...new Set([...d.actions.categories.map((c) => c.id), 'other'])], width: '120px' },
+        { key: 'tier', label: 'Size', type: 'select', options: ['quick', 'meaningful', 'big'], width: '120px' },
+        { key: 'title', label: 'Action', type: 'area' },
+        { key: 'why', label: 'Why it matters (one line)', type: 'area' },
+      ], { addLabel: 'Add an action', blank: { category: 'energy', tier: 'quick', title: '', why: '' }, minWidth: '820px' }),
+      question('verify', 'How should actions be checked?', ['Trust the player (current)', 'Photo proof for big challenges', 'Parent or teacher approves', 'Mix: trust for small, proof for big'], { current: 'Trust the player (current)' }),
+      question('customActions', 'Can players or schools suggest their own actions?', ['No (current)', 'Players suggest, we approve', 'Schools/groups can add their own'], { current: 'No (current)' }),
+      notes('actions'),
+    ))
+
+    // Points
+    const tiersTbl = table(d.points.tiers, [{ key: 'label', label: 'Size', width: '28%' }, { key: 'xp', label: 'XP (levels)', type: 'number' }, { key: 'ep', label: 'Eco Points', type: 'number' }, { key: 'limit', label: 'Max', type: 'number' }, { key: 'per', label: 'Per', type: 'select', options: ['day', 'week'] }])
+    main.append(section('points', 'Points, levels and progress', 'Two kinds of points: XP raises your level (levels unlock bigger habitat stages); Eco Points (EP) are spent in the shop.',
+      h('h3', {}, 'Points per action'), tiersTbl,
+      h('h3', {}, 'Other ways to earn'),
+      h('div', {},
+        numRow(d.points.streak, 'bonus1Days', 'Streak bonus 1: after this many days in a row…'),
+        numRow(d.points.streak, 'bonus1Pct', '…every action earns this much extra EP', '', { suffix: '%' }),
+        numRow(d.points.streak, 'bonus2Days', 'Streak bonus 2: after this many days in a row…'),
+        numRow(d.points.streak, 'bonus2Pct', '…every action earns this much extra EP', '', { suffix: '%' }),
+        numRow(d.points, 'litterEp', 'EP for each piece of litter cleaned in Walk around'),
+        numRow(d.points, 'litterPerDay', 'Litter pieces per day'),
+        numRow(d.points, 'minigameEp', 'EP for winning a mini-game (once a day)'),
+        numRow(d.points, 'highFiveEp', 'EP for a high five between friends (each, once a day)'),
+        numRow(d.points, 'happinessDropPerDay', 'Mascot happiness lost per day without food', '0–100 scale', { suffix: '' }),
+        numRow(d.points, 'levelsToReachStage4Weeks', 'Weeks of regular play to reach the final habitat stage', 'roughly', { suffix: ' weeks' }),
+      ),
+      h('div', { class: 'grid2', style: 'margin-top:8px' }, field(d.points, 'stageLevelGates', 'Level needed for habitat stages 1, 2, 3, 4')),
+      question('pace', 'Overall pace', ['About right', 'Faster: players should see progress sooner', 'Slower: make it last longer'], {}),
+      question('readEp', 'Should reading a learning article earn points?', ['No (current)', 'Yes, a small amount', 'Yes, plus a mini quiz for more'], { current: 'No (current)' }),
+      question('decay', 'Should anything be lost if a player stops playing?', ['Only mascot happiness drops (current)', 'Nothing at all', 'Habitat slowly wilts until they return'], { current: 'Only mascot happiness drops (current)' }),
+      notes('points'),
+    ))
+
+    // Shop
+    main.append(section('shop', 'Rewards shop (what points buy)', 'Everything in the shop is cosmetic. Points never buy an advantage or anything real-world, today.',
+      table(d.shop.items, [
+        { key: 'kind', label: 'Type', type: 'select', options: ['food', 'decor', 'clothing', 'habitat', 'minigame', 'other'], width: '120px' },
+        { key: 'name', label: 'Item' },
+        { key: 'blurb', label: 'Description', type: 'area' },
+        { key: 'price', label: 'Price (EP)', type: 'number', width: '110px' },
+        { key: 'extra', label: 'Notes' },
+      ], { addLabel: 'Add an item', blank: { kind: 'decor', name: '', blurb: '', price: 100, extra: '' }, minWidth: '860px' }),
+      h('div', { class: 'grid2', style: 'margin-top:10px' }, field(d.shop, 'decorCap', 'How many decorations fit in a habitat'), field(d.shop, 'accessoryColours', 'Accessory colours', { area: true })),
+      question('realRewards', 'Should points ever unlock something real?', ['No, in-game only (current)', 'Certificates / badges to share', 'A real tree planted per X points', 'Partner vouchers or discounts', 'School recognition'], { multi: true }),
+      question('paid', 'Paid content', ['Everything free (current)', 'Optional paid cosmetics later', 'Paid school/family plan later'], { current: 'Everything free (current)' }),
+      notes('shop'),
+    ))
+
+    // Learning
+    main.append(section('learning', 'Learning content', `${d.learning.length} short reads, five per topic, each with a source and a “try this” action. Some unlock as the habitat grows. All are drafts awaiting review.`,
+      table(d.learning, [{ key: 'pillar', label: 'Topic', width: '110px' }, { key: 'title', label: 'Title', type: 'area' }, { key: 'unlockStage', label: 'Unlocks at stage', type: 'number', width: '120px' }, { key: 'source', label: 'Source' }], { addLabel: 'Suggest a topic', blank: { pillar: '', title: '', unlockStage: 0, source: '' }, minWidth: '820px' }),
+      textQ('reviewer', 'Who will review the articles for accuracy, and by when?', { rows: 2 }),
+      question('contentFormat', 'Formats you want', ['Short reads (current)', 'Short videos', 'Quizzes', 'Daily fact on Home', 'Stories featuring the characters'], { multi: true }),
+      notes('learning'),
+    ))
+
+    // Social
+    const FEATURES = [
+      ['friends', 'Add friends by exact username or invite link / QR (no public search)'],
+      ['visit', 'Visit a friend’s live 3D habitat'],
+      ['highfive', 'Daily high fives between friends'],
+      ['leaderboard', 'Weekly leaderboards (EP, actions, streak) among friends and in groups'],
+      ['groups', 'Groups for families / classes (join by code or link)'],
+      ['chat', 'Group chat with free text (bad words and personal info blocked)'],
+      ['cards', 'Share game cards in chat (actions, habitat, articles, challenges)'],
+      ['challenges', 'Weekly team challenges with a shared goal and reward'],
+      ['trades', 'Fair item swaps between friends'],
+      ['gifts', 'Gifts of items to friends'],
+      ['safety', 'Report, block, owner can remove members and delete messages'],
+    ]
+    S.q.features = S.q.features || {}
+    const featTbl = h('div', {}, ...FEATURES.map(([id, label]) => {
+      const v = S.q.features[id] || 'Keep'
+      const row = h('div', { class: 'num-row' }, h('div', { class: 'l' }, label),
+        h('select', { style: 'max-width:150px', onchange: (e) => { S.q.features[id] = e.target.value; changed() } }, ...['Keep', 'Change', 'Remove', 'Later'].map((o) => h('option', { selected: v === o }, o))))
+      return row
+    }))
+    main.append(section('social', 'Friends and groups', 'Everything players can do together. All of this works today (tested live with several accounts).',
+      h('h3', {}, 'Features'), featTbl,
+      h('h3', {}, 'Settings'),
+      h('div', {},
+        numRow(d.social, 'groupMax', 'Maximum people in a group'),
+        numRow(d.social, 'tradeBalancePct', 'Trades must be fair within', 'both sides’ value', { suffix: '%' }),
+        numRow(d.social, 'tradesPerDay', 'Trades or gifts per player per day'),
+        numRow(d.social, 'giftMaxEp', 'Maximum value of a gift', '', { suffix: ' EP' }),
+        numRow(d.social, 'tradeExpiryHours', 'Unanswered trade offers expire after', '', { suffix: ' h' }),
+        numRow(d.social, 'messageMaxChars', 'Longest chat message', '', { suffix: ' characters' }),
+      ),
+      h('h3', {}, 'Weekly team challenge templates'),
+      table(d.social.challengeTemplates, [{ key: 'title', label: 'Challenge', type: 'area' }, { key: 'perMember', label: 'Target per member', type: 'number', width: '140px' }, { key: 'rewardEp', label: 'Reward (EP)', type: 'number', width: '120px' }], { addLabel: 'Add a challenge', blank: { title: '', perMember: 3, rewardEp: 50 } }),
+      question('chatMode', 'Chat for this age group', ['Free text with filters, all ages (current)', 'Quick phrases and game cards only', 'Free text for 13+, phrases only under 13', 'No chat'], { current: 'Free text with filters, all ages (current)' }),
+      question('publicBoards', 'Leaderboards beyond friends?', ['Friends and groups only (current)', 'Class / school leaderboards', 'City or national leaderboard'], { current: 'Friends and groups only (current)' }),
+      question('moreSocial', 'Other things to do together', ['Co-op habitat players build together', 'Friendly 1-v-1 weekly challenges', 'Send a mascot to visit a friend', 'Shared photo wall of real actions', 'Events (e.g. Earth Day) for everyone'], { multi: true }),
+      textQ('moderator', 'Who reviews reports from players, and how quickly?', { rows: 2 }),
+      notes('social'),
+    ))
+
+    // Safety
+    main.append(section('safety', 'Safety and privacy', 'Built for minors: no real name, location, contacts, camera or microphone. Inactive accounts are deleted after a set time.',
+      h('div', {}, numRow(d.privacy, 'dataRetentionMonths', 'Delete inactive accounts after', '', { suffix: ' months' })),
+      question('minAge', 'Minimum age', ['12 (current)', '10', '13', 'No minimum with parent consent'], { current: '12 (current)' }),
+      question('parentView', 'Parent or teacher view', ['Not needed (current)', 'Parent dashboard', 'Teacher dashboard for a class'], { current: 'Not needed (current)', multi: false }),
+      question('analytics', 'Usage analytics', ['Anonymous analytics with opt-out (current)', 'No analytics', 'Opt-in only'], { current: 'Anonymous analytics with opt-out (current)' }),
+      textQ('policy', 'Do you have a privacy policy, terms or school requirements we must follow? Paste links or notes.', { rows: 2 }),
+      notes('safety'),
+    ))
+
+    // Brand
+    main.append(section('brand', 'Look and feel', '',
+      h('div', { class: 'grid2' }, field(d.brand, 'appName', 'App name'), field(d.brand, 'tagline', 'Tagline')),
+      question('feel', 'The look today is soft, rounded and friendly (greens and orange). Should it…', ['Stay as it is', 'Be brighter and more playful', 'Be calmer and more grown-up', 'Match a brand guide we will send'], {}),
+      question('sound', 'Sound and music', ['Small reward chimes (current)', 'Add background music', 'Add character voices / sounds', 'No sound'], { multi: true }),
+      textQ('brandLinks', 'Logo, fonts, colours or references we should use (links)', { rows: 2 }),
+      notes('brand'),
+    ))
+
+    // Launch
+    main.append(section('launch', 'Launch and success', '',
+      textQ('launchDate', 'Target launch date and any events to launch around (e.g. World Environment Day)', { rows: 2 }),
+      question('platform', 'Where should players get Wildkin?', ['Web app / install from browser (current)', 'Google Play Store', 'Apple App Store'], { multi: true }),
+      textQ('success', 'How will we know it worked? (e.g. 500 players, 30% weekly active, actions logged)', { rows: 3 }),
+      textQ('budget', 'Budget or constraints we should know about (optional)', { rows: 2 }),
+      notes('launch'),
+    ))
+
+    // Final
+    const submitted = S.status === 'submitted'
+    main.append(section('final', 'Top priorities and submit', 'Last step: what matters most?',
+      textQ('top3', 'Your top three changes, in order', { rows: 4 }),
+      textQ('mustNot', 'Anything we must not change?', { rows: 2 }),
+      h('div', { class: 'row no-print', style: 'display:flex;gap:10px;flex-wrap:wrap;margin-top:16px' },
+        h('button', { class: 'pill-btn', type: 'button', onclick: submit }, submitted ? 'Submit again with changes' : 'Submit my requirements'),
+        h('button', { class: 'pill-btn ghost', type: 'button', onclick: download }, 'Download a copy'),
+        h('button', { class: 'pill-btn ghost', type: 'button', onclick: () => window.print() }, 'Print / PDF'),
+      ),
+      h('p', { class: 'sub' }, 'Your answers are saved automatically as you go, so you can close this page and come back with the same link. Submitting tells us you’re done.'),
+    ))
+
+    const bar = h('div', { class: 'bar no-print' }, h('div', { class: 'inner' }, h('div', { class: 'status', id: 'savestatus' }), h('button', { class: 'pill-btn accent', type: 'button', onclick: () => document.getElementById('final').scrollIntoView() }, 'Finish')))
+    app.replaceChildren(hero, toc, main, bar)
+    setSave(saveState)
+    markTouched()
+  }
+
+  async function submit() {
+    S.status = 'submitted'
+    S.submittedAt = Date.now()
+    changed()
+    clearTimeout(saveTimer)
+    await pushToCloud()
+    if (saveState === 'ok') toast('Submitted. Thank you! 🌿 You can still edit and submit again.')
+    else toast('Saved on this device. We couldn’t reach the server; please try again in a moment.')
+    render()
+  }
+
+  function download() {
+    const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' })
+    const a = document.createElement('a')
+    a.href = URL.createObjectURL(blob)
+    a.download = `wildkin-requirements-${(S.name || 'client').replace(/\W+/g, '-').toLowerCase()}.json`
+    a.click()
+    URL.revokeObjectURL(a.href)
+  }
+
+  // ------------------------------------------------------------------ boot
+  app.append(h('p', { class: 'gate' }, 'Loading…'))
+  ;(async () => {
+    D = await fetch('defaults.json', { cache: 'no-store' }).then((r) => r.json())
+    let saved = null
+    try {
+      const r = await fetch(DOC_URL(KEY))
+      if (r.ok) {
+        const doc = await r.json()
+        saved = JSON.parse(doc.fields?.data?.stringValue || 'null')
+        lastSaved = Date.parse(doc.fields?.updatedAt?.timestampValue || '') || null
+      }
+    } catch (e) {}
+    let local = null
+    try { local = JSON.parse(localStorage.getItem(LOCAL) || 'null') } catch (e) {}
+    const best = [saved, local].filter(Boolean).sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))[0]
+    S = { name: '', role: '', status: 'draft', q: {}, notes: {}, updatedAt: 0, ...(best || {}), data: merge(D, best?.data) }
+    S.defaultsVersion = D.generatedAt
+    saveState = saved ? 'ok' : 'idle'
+    render()
+    if (local && (!saved || (local.updatedAt || 0) > (saved.updatedAt || 0))) pushToCloud()
+  })()
+})()
+</script>
+</body>
+</html>

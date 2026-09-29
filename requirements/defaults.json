@@ -1,0 +1,1000 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-29T17:01:34.180Z",
+  "brand": {
+    "appName": "Wildkin",
+    "tagline": "Small details. Big adventures."
+  },
+  "characters": [
+    {
+      "id": "turtle",
+      "name": "Sea Turtle",
+      "habitatName": "Ocean Reef",
+      "teaches": "Ocean plastic pollution",
+      "tagline": "Sea today, brighter tomorrows.",
+      "traits": "Calm, Curious, Kind, Brave",
+      "variants": [
+        {
+          "name": "Ocean Green",
+          "tagline": "Calm and classic. A true ocean friend.",
+          "colours": "#6CC4A4 #2F9E7E #E6F4E8 #0E4D4B"
+        },
+        {
+          "name": "Coral Blue",
+          "tagline": "Bright waters, bolder dreams.",
+          "colours": "#6EB6FF #3A7BD5 #EAF3FF #1E3A8A"
+        },
+        {
+          "name": "Golden Sand",
+          "tagline": "Warmer shores, brighter days.",
+          "colours": "#F2C46D #D39B3E #FAF1D7 #6B4F2B"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Empty Seabed",
+          "description": "Bare sandy seabed, dim light."
+        },
+        {
+          "name": "Basic Reef",
+          "description": "A seagrass patch and small rocks."
+        },
+        {
+          "name": "Growing Reef",
+          "description": "Coral clusters form, a few fish, sunlight rays."
+        },
+        {
+          "name": "Thriving Reef",
+          "description": "A vibrant reef, schools of fish, anemones."
+        },
+        {
+          "name": "Flourishing Reef",
+          "description": "A full reef ecosystem with visiting sea creatures and bioluminescent accents."
+        }
+      ],
+      "foods": "Seagrass Snack, Reef Salad, Ocean Feast",
+      "locomotion": "swim"
+    },
+    {
+      "id": "redpanda",
+      "name": "Red Panda",
+      "habitatName": "Forest Canopy",
+      "teaches": "Forest and habitat loss",
+      "tagline": "Playful by nature. A brighter wild.",
+      "traits": "Playful, Curious, Kind, Adventurous",
+      "variants": [
+        {
+          "name": "Classic Red",
+          "tagline": "The original explorer.",
+          "colours": "#E05A2B #5B3A2E #F5E6D7 #4E7A4F"
+        },
+        {
+          "name": "Cinnamon Brown",
+          "tagline": "Earthy and warm.",
+          "colours": "#A86B42 #5B4636 #E8D6C3 #B44D4D"
+        },
+        {
+          "name": "Frosted Cream",
+          "tagline": "A rare and gentle spirit.",
+          "colours": "#F4E9D9 #C9A88A #8F8F98 #5B7CAB"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Bare Branch",
+          "description": "A bare branch with sparse leaves."
+        },
+        {
+          "name": "Basic Canopy",
+          "description": "A few leafy branches and a small nest."
+        },
+        {
+          "name": "Growing Canopy",
+          "description": "Bamboo grove sprouts, mossy ground."
+        },
+        {
+          "name": "Thriving Canopy",
+          "description": "Dense canopy, fireflies, hanging vines."
+        },
+        {
+          "name": "Flourishing Canopy",
+          "description": "A flourishing canopy with a misty waterfall, treehouse and visiting forest critters."
+        }
+      ],
+      "foods": "Bamboo & Apple, Berry Bowl, Forest Feast",
+      "locomotion": "walk"
+    },
+    {
+      "id": "snowleopard",
+      "name": "Snow Leopard",
+      "habitatName": "Mountain Ledge",
+      "teaches": "Mountain biodiversity and poaching",
+      "tagline": "Higher together.",
+      "traits": "Brave, Curious, Calm, Loyal",
+      "variants": [
+        {
+          "name": "Frost White",
+          "tagline": "Clean. Iconic. Always ready.",
+          "colours": "#F2F4F8 #4F5B6E #FFFFFF #3B6EA5"
+        },
+        {
+          "name": "Storm Grey",
+          "tagline": "Bold. Grounded. Confident.",
+          "colours": "#8D99A8 #2E3440 #C9CCD6 #5C6573"
+        },
+        {
+          "name": "Moonlight Blue",
+          "tagline": "Cool. Calm. Adventurous.",
+          "colours": "#E6F0FF #5C7DA8 #FFFFFF #3B6EA5"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Quiet Ledge",
+          "description": "A bare rocky ledge with thin snow."
+        },
+        {
+          "name": "Basic Ledge",
+          "description": "Small rocks, a snow patch, pine saplings."
+        },
+        {
+          "name": "Growing Slopes",
+          "description": "Pine trees, larger snowdrifts, a mountain stream."
+        },
+        {
+          "name": "Thriving Alpine",
+          "description": "Full alpine landscape, waterfall, aurora-lit sky."
+        },
+        {
+          "name": "Mountain Vista",
+          "description": "A mountain vista with a den, visiting mountain goats and a starry night sky."
+        }
+      ],
+      "foods": "Meat Bite, Mountain Fish, Alpine Feast",
+      "locomotion": "walk"
+    }
+  ],
+  "onboarding": {
+    "ageBands": "12, 13–15, 16+",
+    "pillars": [
+      {
+        "id": "animals",
+        "label": "Animals & Biodiversity",
+        "blurb": "Wildlife, forests and the web of life."
+      },
+      {
+        "id": "oceans",
+        "label": "Oceans",
+        "blurb": "Reefs, plastic and the blue planet."
+      },
+      {
+        "id": "cities",
+        "label": "Cities & Community",
+        "blurb": "Green streets, clean air, shared spaces."
+      },
+      {
+        "id": "energy",
+        "label": "Energy & Climate",
+        "blurb": "Power, heat and a changing climate."
+      },
+      {
+        "id": "health",
+        "label": "Human Health",
+        "blurb": "Clean air, safe water, healthy people."
+      },
+      {
+        "id": "industry",
+        "label": "Industries & Innovation",
+        "blurb": "Inventions that fix big problems."
+      }
+    ],
+    "quiz": [
+      {
+        "prompt": "You get a free afternoon. Where do you go?",
+        "options": [
+          {
+            "label": "A beach or a lake",
+            "emoji": "🌊",
+            "pillars": "oceans, animals"
+          },
+          {
+            "label": "A forest trail or a park",
+            "emoji": "🌳",
+            "pillars": "animals, cities"
+          },
+          {
+            "label": "A busy market or city square",
+            "emoji": "🏙️",
+            "pillars": "cities, health"
+          },
+          {
+            "label": "A science museum or maker space",
+            "emoji": "🔬",
+            "pillars": "industry, energy"
+          }
+        ]
+      },
+      {
+        "prompt": "Which news headline would you tap first?",
+        "options": [
+          {
+            "label": "“New species discovered in the Western Ghats”",
+            "emoji": "🐾",
+            "pillars": "animals"
+          },
+          {
+            "label": "“Solar farm powers an entire town”",
+            "emoji": "☀️",
+            "pillars": "energy, industry"
+          },
+          {
+            "label": "“Delhi air quality hits new low”",
+            "emoji": "😷",
+            "pillars": "health, cities"
+          },
+          {
+            "label": "“Teen invents plastic-eating gadget”",
+            "emoji": "💡",
+            "pillars": "industry, oceans"
+          }
+        ]
+      },
+      {
+        "prompt": "Pick a superpower.",
+        "options": [
+          {
+            "label": "Talk to animals",
+            "emoji": "🦜",
+            "pillars": "animals"
+          },
+          {
+            "label": "Breathe underwater",
+            "emoji": "🐠",
+            "pillars": "oceans"
+          },
+          {
+            "label": "Control the weather",
+            "emoji": "⛈️",
+            "pillars": "energy"
+          },
+          {
+            "label": "Heal anyone instantly",
+            "emoji": "💚",
+            "pillars": "health"
+          }
+        ]
+      },
+      {
+        "prompt": "What bugs you the most?",
+        "options": [
+          {
+            "label": "Plastic on a beach",
+            "emoji": "🥤",
+            "pillars": "oceans, animals"
+          },
+          {
+            "label": "Traffic and honking",
+            "emoji": "🚗",
+            "pillars": "cities, health"
+          },
+          {
+            "label": "Lights left on in empty rooms",
+            "emoji": "💡",
+            "pillars": "energy"
+          },
+          {
+            "label": "Things that break and cannot be fixed",
+            "emoji": "🔧",
+            "pillars": "industry"
+          }
+        ]
+      },
+      {
+        "prompt": "Your dream project would be…",
+        "options": [
+          {
+            "label": "Rewilding a patch of land",
+            "emoji": "🌱",
+            "pillars": "animals, cities"
+          },
+          {
+            "label": "Designing a car-free neighbourhood",
+            "emoji": "🚲",
+            "pillars": "cities, health"
+          },
+          {
+            "label": "Building a cheap clean-water filter",
+            "emoji": "💧",
+            "pillars": "health, industry"
+          },
+          {
+            "label": "Launching an ocean clean-up fleet",
+            "emoji": "🚢",
+            "pillars": "oceans, industry"
+          }
+        ]
+      },
+      {
+        "prompt": "Which fact would you tell a friend?",
+        "options": [
+          {
+            "label": "Some sea turtles live for over 80 years",
+            "emoji": "🐢",
+            "pillars": "oceans, animals"
+          },
+          {
+            "label": "A ceiling fan uses 90% less power than AC",
+            "emoji": "🌀",
+            "pillars": "energy"
+          },
+          {
+            "label": "Trees can cool a street by several degrees",
+            "emoji": "🌡️",
+            "pillars": "cities, health"
+          },
+          {
+            "label": "Some factories now run on food waste",
+            "emoji": "🏭",
+            "pillars": "industry, energy"
+          }
+        ]
+      }
+    ]
+  },
+  "actions": {
+    "categories": [
+      {
+        "id": "energy",
+        "label": "Energy",
+        "blurb": "Power down what you are not using."
+      },
+      {
+        "id": "water",
+        "label": "Water",
+        "blurb": "Every drop you save stays in a river."
+      },
+      {
+        "id": "waste",
+        "label": "Waste",
+        "blurb": "Less in the bin, more in the loop."
+      },
+      {
+        "id": "transport",
+        "label": "Transport",
+        "blurb": "Move smarter, breathe cleaner."
+      },
+      {
+        "id": "food",
+        "label": "Food",
+        "blurb": "What is on your plate shapes the planet."
+      },
+      {
+        "id": "community",
+        "label": "Community",
+        "blurb": "Change spreads one conversation at a time."
+      }
+    ],
+    "list": [
+      {
+        "category": "energy",
+        "tier": "quick",
+        "title": "Turn off an unused light",
+        "why": "Lighting is one of the easiest loads to cut at home."
+      },
+      {
+        "category": "energy",
+        "tier": "quick",
+        "title": "Unplug an idle charger",
+        "why": "Plugged-in chargers keep sipping power even when nothing is attached."
+      },
+      {
+        "category": "energy",
+        "tier": "meaningful",
+        "title": "Use a fan instead of AC for an hour",
+        "why": "A ceiling fan uses a small fraction of the electricity of an air conditioner."
+      },
+      {
+        "category": "energy",
+        "tier": "meaningful",
+        "title": "Air-dry clothes instead of using a dryer",
+        "why": "Dryers are among the hungriest appliances in a home."
+      },
+      {
+        "category": "energy",
+        "tier": "big",
+        "title": "Turn off all standby devices before bed, every night this week",
+        "why": "Standby power can be 5–10% of a household’s electricity use."
+      },
+      {
+        "category": "water",
+        "tier": "quick",
+        "title": "Turn off the tap while brushing",
+        "why": "A running tap wastes around 6 litres a minute."
+      },
+      {
+        "category": "water",
+        "tier": "quick",
+        "title": "Reuse water for plants",
+        "why": "Rinse water from vegetables is perfect for a thirsty plant."
+      },
+      {
+        "category": "water",
+        "tier": "meaningful",
+        "title": "Take a shorter shower",
+        "why": "Cutting two minutes saves buckets of water and the energy to heat it."
+      },
+      {
+        "category": "water",
+        "tier": "meaningful",
+        "title": "Run the washing machine only when full",
+        "why": "Half loads use almost as much water and power as full ones."
+      },
+      {
+        "category": "water",
+        "tier": "big",
+        "title": "Fix or report a dripping tap",
+        "why": "One dripping tap can leak thousands of litres a year."
+      },
+      {
+        "category": "waste",
+        "tier": "quick",
+        "title": "Refuse a plastic bag",
+        "why": "Single-use bags are among the most common items found on beaches."
+      },
+      {
+        "category": "waste",
+        "tier": "quick",
+        "title": "Carry a reusable bottle",
+        "why": "One bottle can replace hundreds of plastic ones a year."
+      },
+      {
+        "category": "waste",
+        "tier": "meaningful",
+        "title": "Segregate wet and dry waste",
+        "why": "Sorted waste is far more likely to be recycled or composted."
+      },
+      {
+        "category": "waste",
+        "tier": "meaningful",
+        "title": "Recycle a paper or cardboard item",
+        "why": "Recycled paper uses much less water and energy than new paper."
+      },
+      {
+        "category": "waste",
+        "tier": "big",
+        "title": "Compost food scraps for a week",
+        "why": "Food in landfill releases methane; compost feeds soil instead."
+      },
+      {
+        "category": "transport",
+        "tier": "quick",
+        "title": "Walk or cycle instead of a short car ride",
+        "why": "Short trips are where cars are least efficient and most polluting."
+      },
+      {
+        "category": "transport",
+        "tier": "quick",
+        "title": "Combine errands into one trip",
+        "why": "Fewer cold starts means far less fuel burnt."
+      },
+      {
+        "category": "transport",
+        "tier": "meaningful",
+        "title": "Carpool instead of a solo trip",
+        "why": "Two people in one car halves the emissions per person."
+      },
+      {
+        "category": "transport",
+        "tier": "meaningful",
+        "title": "Use public transport for a trip",
+        "why": "A full bus takes dozens of cars off the road."
+      },
+      {
+        "category": "transport",
+        "tier": "big",
+        "title": "Check tyre pressure with a parent",
+        "why": "Properly inflated tyres improve mileage and reduce emissions."
+      },
+      {
+        "category": "food",
+        "tier": "quick",
+        "title": "Finish a plate with no food waste",
+        "why": "About a third of all food produced is never eaten."
+      },
+      {
+        "category": "food",
+        "tier": "quick",
+        "title": "Avoid a single-use food container",
+        "why": "Takeaway boxes are used for minutes and last for centuries."
+      },
+      {
+        "category": "food",
+        "tier": "meaningful",
+        "title": "Eat a plant-based meal",
+        "why": "Plant-based meals typically have a much lower carbon footprint."
+      },
+      {
+        "category": "food",
+        "tier": "meaningful",
+        "title": "Pack a reusable lunch box",
+        "why": "Skips the wrappers, foil and plastic that come with packed food."
+      },
+      {
+        "category": "food",
+        "tier": "big",
+        "title": "Buy a local or seasonal item",
+        "why": "Seasonal produce travels less and needs less cold storage."
+      },
+      {
+        "category": "community",
+        "tier": "quick",
+        "title": "Share one sustainability fact",
+        "why": "Ideas spread through friends faster than through ads."
+      },
+      {
+        "category": "community",
+        "tier": "quick",
+        "title": "Bring your own bag while shopping",
+        "why": "Visible habits nudge the people around you."
+      },
+      {
+        "category": "community",
+        "tier": "meaningful",
+        "title": "Plant or water a plant",
+        "why": "Green space cools cities and feeds birds and bees."
+      },
+      {
+        "category": "community",
+        "tier": "meaningful",
+        "title": "Start a sustainability conversation at home",
+        "why": "Household decisions on power, water and food add up."
+      },
+      {
+        "category": "community",
+        "tier": "big",
+        "title": "Join a local clean-up",
+        "why": "Litter picked up today never reaches a river or the sea."
+      }
+    ]
+  },
+  "points": {
+    "tiers": [
+      {
+        "id": "quick",
+        "label": "Quick action",
+        "xp": 10,
+        "ep": 10,
+        "limit": 3,
+        "per": "day"
+      },
+      {
+        "id": "meaningful",
+        "label": "Meaningful action",
+        "xp": 40,
+        "ep": 40,
+        "limit": 2,
+        "per": "day"
+      },
+      {
+        "id": "big",
+        "label": "Big weekly challenge",
+        "xp": 150,
+        "ep": 150,
+        "limit": 1,
+        "per": "week"
+      }
+    ],
+    "streak": {
+      "bonus1Days": 3,
+      "bonus1Pct": 20,
+      "bonus2Days": 7,
+      "bonus2Pct": 50
+    },
+    "stageLevelGates": "1, 3, 6, 10",
+    "levelsToReachStage4Weeks": 4,
+    "happinessDropPerDay": 12,
+    "litterEp": 2,
+    "litterPerDay": 8,
+    "minigameEp": 15,
+    "highFiveEp": 5
+  },
+  "shop": {
+    "items": [
+      {
+        "kind": "food",
+        "name": "Basic Snack",
+        "blurb": "A quick bite.",
+        "price": 50,
+        "extra": "+15 happiness"
+      },
+      {
+        "kind": "food",
+        "name": "Premium Meal",
+        "blurb": "A tastier treat.",
+        "price": 150,
+        "extra": "+40 happiness"
+      },
+      {
+        "kind": "food",
+        "name": "Feast",
+        "blurb": "A special celebration!",
+        "price": 400,
+        "extra": "+100 happiness"
+      },
+      {
+        "kind": "decor",
+        "name": "Plant Pot",
+        "blurb": "A touch of green.",
+        "price": 120,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Rock",
+        "blurb": "A natural touch.",
+        "price": 200,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Lantern",
+        "blurb": "A warmer space.",
+        "price": 300,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Prayer Flags",
+        "blurb": "A warmer space.",
+        "price": 250,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Water Feature",
+        "blurb": "A gentle splash of life.",
+        "price": 500,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Compost Bin",
+        "blurb": "Kitchen scraps become rich soil.",
+        "price": 220,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Bird House",
+        "blurb": "A safe home for sparrows.",
+        "price": 260,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Bee Hotel",
+        "blurb": "Solitary bees love these tubes.",
+        "price": 280,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Rain Barrel",
+        "blurb": "Catch rain for thirsty plants.",
+        "price": 320,
+        "extra": ""
+      },
+      {
+        "kind": "decor",
+        "name": "Solar Lamp",
+        "blurb": "Sunshine by day, glow by night.",
+        "price": 380,
+        "extra": ""
+      },
+      {
+        "kind": "clothing",
+        "name": "Bandana",
+        "blurb": "A classic for every explorer.",
+        "price": 80,
+        "extra": "bandana"
+      },
+      {
+        "kind": "clothing",
+        "name": "Badge",
+        "blurb": "A small symbol, a big story.",
+        "price": 120,
+        "extra": "badge"
+      },
+      {
+        "kind": "clothing",
+        "name": "Hat",
+        "blurb": "A little extra adventure.",
+        "price": 150,
+        "extra": "hat"
+      },
+      {
+        "kind": "clothing",
+        "name": "Scarf",
+        "blurb": "Cosy for every current.",
+        "price": 200,
+        "extra": "scarf"
+      },
+      {
+        "kind": "clothing",
+        "name": "Glasses",
+        "blurb": "A new perspective.",
+        "price": 250,
+        "extra": "glasses"
+      },
+      {
+        "kind": "habitat",
+        "name": "Basic Habitat",
+        "blurb": "The first signs of life.",
+        "price": 300,
+        "extra": "needs level 1"
+      },
+      {
+        "kind": "habitat",
+        "name": "Growing Ecosystem",
+        "blurb": "Colour and movement arrive.",
+        "price": 800,
+        "extra": "needs level 3"
+      },
+      {
+        "kind": "habitat",
+        "name": "Thriving Habitat",
+        "blurb": "Busy, bright and alive.",
+        "price": 1500,
+        "extra": "needs level 6"
+      },
+      {
+        "kind": "habitat",
+        "name": "Flourishing Ecosystem",
+        "blurb": "A whole world in balance.",
+        "price": 3000,
+        "extra": "needs level 10"
+      },
+      {
+        "kind": "minigame",
+        "name": "Matching Game",
+        "blurb": "Pair up the reef & forest cards.",
+        "price": 200,
+        "extra": ""
+      },
+      {
+        "kind": "minigame",
+        "name": "Timing Game",
+        "blurb": "Catch the treat at the perfect moment.",
+        "price": 200,
+        "extra": ""
+      }
+    ],
+    "decorCap": "6 at the start, 18 at the final stage",
+    "accessoryColours": "bandana: #E5484D #3A7BD5 #3AA76D #F2B84B #9C5FCF\nhat: #D9B77C #3A7BD5 #E5484D #3AA76D #A86B42\nglasses: #2B2B2B #E5484D #5B9FE6 #F2B84B #4E7A4F\nscarf: #E05A7A #3A7BD5 #3AA76D #F2B84B #9C5FCF\nbadge: #3AA76D #E5484D #5B9FE6 #F2B84B #9C5FCF"
+  },
+  "learning": [
+    {
+      "pillar": "animals",
+      "title": "Where did the house sparrows go?",
+      "unlockStage": 0,
+      "source": "State of India’s Birds 2023 (SoIB partnership)"
+    },
+    {
+      "pillar": "animals",
+      "title": "Red pandas: the shy neighbour of the Himalaya",
+      "unlockStage": 0,
+      "source": "IUCN Red List: Ailurus fulgens"
+    },
+    {
+      "pillar": "animals",
+      "title": "The Western Ghats: a mountain range full of firsts",
+      "unlockStage": 1,
+      "source": "UNESCO World Heritage Centre: Western Ghats"
+    },
+    {
+      "pillar": "animals",
+      "title": "What the Living Planet Index actually measures",
+      "unlockStage": 2,
+      "source": "WWF Living Planet Report 2024"
+    },
+    {
+      "pillar": "animals",
+      "title": "Counting ghosts: India’s snow leopard census",
+      "unlockStage": 3,
+      "source": "Snow Leopard Population Assessment in India (Wildlife Institute of India / MoEFCC, 2024)"
+    },
+    {
+      "pillar": "oceans",
+      "title": "Why a floating bag looks like lunch to a sea turtle",
+      "unlockStage": 0,
+      "source": "CSIRO / Wilcox et al., Scientific Reports (2018)"
+    },
+    {
+      "pillar": "oceans",
+      "title": "How much plastic reaches the water each year?",
+      "unlockStage": 0,
+      "source": "UNEP, “From Pollution to Solution” (2021)"
+    },
+    {
+      "pillar": "oceans",
+      "title": "Coral bleaching, explained in one breath",
+      "unlockStage": 1,
+      "source": "NOAA Coral Reef Watch"
+    },
+    {
+      "pillar": "oceans",
+      "title": "The night the beach fills with turtles",
+      "unlockStage": 2,
+      "source": "WWF-India: Olive ridley turtle"
+    },
+    {
+      "pillar": "oceans",
+      "title": "Every second breath you take comes from the sea",
+      "unlockStage": 3,
+      "source": "NOAA National Ocean Service: How much oxygen comes from the ocean?"
+    },
+    {
+      "pillar": "cities",
+      "title": "Trees are the cheapest air conditioners a city can buy",
+      "unlockStage": 0,
+      "source": "US EPA: Using Trees and Vegetation to Reduce Heat Islands"
+    },
+    {
+      "pillar": "cities",
+      "title": "Wet, dry, hazardous: why three bins beat one",
+      "unlockStage": 0,
+      "source": "Ministry of Environment, Forest and Climate Change: Solid Waste Management Rules, 2016"
+    },
+    {
+      "pillar": "cities",
+      "title": "Reading the AQI like a weather report",
+      "unlockStage": 1,
+      "source": "Central Pollution Control Board: National Air Quality Index"
+    },
+    {
+      "pillar": "cities",
+      "title": "What a bicycle lane does for a whole street",
+      "unlockStage": 2,
+      "source": "World Health Organization: Physical activity fact sheet"
+    },
+    {
+      "pillar": "cities",
+      "title": "The bees on your balcony are doing real work",
+      "unlockStage": 3,
+      "source": "FAO: Why bees matter"
+    },
+    {
+      "pillar": "energy",
+      "title": "Fan vs AC: the numbers behind the switch",
+      "unlockStage": 0,
+      "source": "Bureau of Energy Efficiency (BEE), Government of India"
+    },
+    {
+      "pillar": "energy",
+      "title": "The little red light that never sleeps",
+      "unlockStage": 0,
+      "source": "International Energy Agency: Standby power"
+    },
+    {
+      "pillar": "energy",
+      "title": "India just crossed 100 gigawatts of solar",
+      "unlockStage": 1,
+      "source": "Ministry of New and Renewable Energy, Government of India"
+    },
+    {
+      "pillar": "energy",
+      "title": "Why scientists keep talking about 1.5°C",
+      "unlockStage": 2,
+      "source": "IPCC Special Report: Global Warming of 1.5°C (2018)"
+    },
+    {
+      "pillar": "energy",
+      "title": "How a cheap bulb became a national project",
+      "unlockStage": 3,
+      "source": "UJALA scheme, Energy Efficiency Services Limited (EESL)"
+    },
+    {
+      "pillar": "health",
+      "title": "What polluted air does inside your body",
+      "unlockStage": 0,
+      "source": "World Health Organization: Ambient (outdoor) air pollution"
+    },
+    {
+      "pillar": "health",
+      "title": "Heatwaves: the quiet disaster",
+      "unlockStage": 0,
+      "source": "National Disaster Management Authority: Heat wave guidelines"
+    },
+    {
+      "pillar": "health",
+      "title": "Clean water is a health system in a glass",
+      "unlockStage": 1,
+      "source": "World Health Organization: Drinking-water fact sheet"
+    },
+    {
+      "pillar": "health",
+      "title": "Microplastics: the part of the problem you cannot see",
+      "unlockStage": 2,
+      "source": "World Health Organization: Microplastics in drinking-water (2019)"
+    },
+    {
+      "pillar": "health",
+      "title": "Why a walk in a park is medicine",
+      "unlockStage": 3,
+      "source": "WHO Regional Office for Europe: Urban green spaces and health (2016)"
+    },
+    {
+      "pillar": "industry",
+      "title": "Take, make, waste: the line we are trying to bend into a loop",
+      "unlockStage": 0,
+      "source": "Ellen MacArthur Foundation: What is a circular economy?"
+    },
+    {
+      "pillar": "industry",
+      "title": "The mountain of old phones",
+      "unlockStage": 0,
+      "source": "Global E-waste Monitor 2024 (UNITAR / ITU)"
+    },
+    {
+      "pillar": "industry",
+      "title": "The bacteria that learned to eat plastic",
+      "unlockStage": 1,
+      "source": "Yoshida et al., Science (2016): A bacterium that degrades and assimilates PET"
+    },
+    {
+      "pillar": "industry",
+      "title": "Green hydrogen: fuel made from water and sunshine",
+      "unlockStage": 2,
+      "source": "National Green Hydrogen Mission, Ministry of New and Renewable Energy"
+    },
+    {
+      "pillar": "industry",
+      "title": "Catching plastic in rivers before it reaches the sea",
+      "unlockStage": 3,
+      "source": "The Ocean Cleanup: Rivers"
+    }
+  ],
+  "social": {
+    "groupMax": 30,
+    "tradeBalancePct": 25,
+    "tradesPerDay": 3,
+    "giftMaxEp": 200,
+    "tradeExpiryHours": 48,
+    "messageMaxChars": 300,
+    "challengeTemplates": [
+      {
+        "title": "Log 8 eco actions together",
+        "perMember": 8,
+        "rewardEp": 60
+      },
+      {
+        "title": "3 water-saving actions",
+        "perMember": 3,
+        "rewardEp": 50
+      },
+      {
+        "title": "3 energy-saving actions",
+        "perMember": 3,
+        "rewardEp": 50
+      },
+      {
+        "title": "3 waste-free actions",
+        "perMember": 3,
+        "rewardEp": 50
+      },
+      {
+        "title": "2 green trips",
+        "perMember": 2,
+        "rewardEp": 50
+      },
+      {
+        "title": "Read 2 Explore articles",
+        "perMember": 2,
+        "rewardEp": 40
+      }
+    ]
+  },
+  "privacy": {
+    "dataRetentionMonths": 12
+  }
+}
