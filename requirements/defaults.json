@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-29T17:01:34.180Z",
+  "generatedAt": "2026-10-04T13:12:52.496Z",
   "brand": {
     "appName": "Wildkin",
     "tagline": "Small details. Big adventures."
@@ -563,15 +563,15 @@
         "id": "quick",
         "label": "Quick action",
         "xp": 10,
-        "ep": 10,
-        "limit": 3,
+        "ep": 30,
+        "limit": 6,
         "per": "day"
       },
       {
         "id": "meaningful",
         "label": "Meaningful action",
         "xp": 40,
-        "ep": 40,
+        "ep": 60,
         "limit": 2,
         "per": "day"
       },
@@ -579,7 +579,7 @@
         "id": "big",
         "label": "Big weekly challenge",
         "xp": 150,
-        "ep": 150,
+        "ep": 250,
         "limit": 1,
         "per": "week"
       }
@@ -593,10 +593,10 @@
     "stageLevelGates": "1, 3, 6, 10",
     "levelsToReachStage4Weeks": 4,
     "happinessDropPerDay": 12,
-    "litterEp": 2,
+    "litterEp": 5,
     "litterPerDay": 8,
-    "minigameEp": 15,
-    "highFiveEp": 5
+    "minigameEp": 30,
+    "highFiveEp": 10
   },
   "shop": {
     "items": [
@@ -758,18 +758,18 @@
         "kind": "minigame",
         "name": "Matching Game",
         "blurb": "Pair up the reef & forest cards.",
-        "price": 200,
+        "price": 100,
         "extra": ""
       },
       {
         "kind": "minigame",
         "name": "Timing Game",
         "blurb": "Catch the treat at the perfect moment.",
-        "price": 200,
+        "price": 100,
         "extra": ""
       }
     ],
-    "decorCap": "6 at the start, 18 at the final stage",
+    "decorCap": "8 at the start, 24 at the final stage",
     "accessoryColours": "bandana: #E5484D #3A7BD5 #3AA76D #F2B84B #9C5FCF\nhat: #D9B77C #3A7BD5 #E5484D #3AA76D #A86B42\nglasses: #2B2B2B #E5484D #5B9FE6 #F2B84B #4E7A4F\nscarf: #E05A7A #3A7BD5 #3AA76D #F2B84B #9C5FCF\nbadge: #3AA76D #E5484D #5B9FE6 #F2B84B #9C5FCF"
   },
   "learning": [
@@ -957,40 +957,40 @@
   "social": {
     "groupMax": 30,
     "tradeBalancePct": 25,
-    "tradesPerDay": 3,
-    "giftMaxEp": 200,
+    "tradesPerDay": 5,
+    "giftMaxEp": 400,
     "tradeExpiryHours": 48,
     "messageMaxChars": 300,
     "challengeTemplates": [
       {
         "title": "Log 8 eco actions together",
         "perMember": 8,
-        "rewardEp": 60
+        "rewardEp": 150
       },
       {
         "title": "3 water-saving actions",
         "perMember": 3,
-        "rewardEp": 50
+        "rewardEp": 125
       },
       {
         "title": "3 energy-saving actions",
         "perMember": 3,
-        "rewardEp": 50
+        "rewardEp": 125
       },
       {
         "title": "3 waste-free actions",
         "perMember": 3,
-        "rewardEp": 50
+        "rewardEp": 125
       },
       {
         "title": "2 green trips",
         "perMember": 2,
-        "rewardEp": 50
+        "rewardEp": 125
       },
       {
         "title": "Read 2 Explore articles",
         "perMember": 2,
-        "rewardEp": 40
+        "rewardEp": 100
       }
     ]
   },
